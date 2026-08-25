@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haider Ali | Full-Stack Software Engineer & Digital Solutions</title>
+    <!-- Font Awesome & Modern Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #070a12;
+            --bg-surface: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            
+            --neon-green: #10b981;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #a855f7;
+            
+            --text-white: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-line: rgba(255, 255, 255, 0.1);
+            
+            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, .logo, .stat-num { font-family: 'Space Grotesk', sans-serif; }
+        
+        body { background-color: var(--bg-deep); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Glass Navigation --- */
+        header { position: sticky; top: 0; background: rgba(7, 10, 18, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-line); z-index: 1000; padding: 18px 0; }
+        .nav-box { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
+
+        .nav-menu { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 8px 0; transition: 0.3s; display: flex; align-items: center; gap: 6px; }
+        .nav-link:hover, .nav-link.active { color: var(--neon-green); }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid var(--neon-green); }
+
+        /* Dropdown Styling */
+        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 12px; min-width: 220px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); padding-left: 24px; }
+
+        .btn-hire { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; box-shadow: var(--glow-shadow); }
+        .btn-hire:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* --- Hero Section --- */
+        .hero { display: flex; align-items: center; gap: 60px; padding: 90px 0 70px; }
+        .hero-avatar { flex: 1; display: flex; justify-content: center; }
+        .avatar-ring { position: relative; width: 280px; height: 280px; border-radius: 50%; padding: 4px; background: var(--main-gradient); animation: pulseGlow 4s infinite alternate; }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); } 100% { box-shadow: 0 0 50px rgba(6, 182, 212, 0.6); } }
+        .avatar-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--bg-surface); }
+        
+        .hero-details { flex: 1.5; }
+        .status-badge { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: var(--neon-green); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+        .hero-details h1 { font-size: 3.2rem; line-height: 1.15; font-weight: 700; margin-bottom: 18px; letter-spacing: -1px; }
+        .hero-details h1 span { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
+        .hero-details p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; }
+
+        /* Social Icons */
+        .social-links { display: flex; gap: 14px; margin-bottom: 35px; }
+        .social-btn { width: 44px; height: 44px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-line); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1.2rem; text-decoration: none; transition: 0.3s; }
+        .social-btn:hover { background: var(--neon-green); color: #000; transform: translateY(-3px); border-color: var(--neon-green); box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+
+        /* --- Stats Counter Bar --- */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 20px; padding: 35px 40px; margin-bottom: 90px; }
+        .stat-box { text-align: center; }
+        .stat-num { font-size: 2.8rem; font-weight: 700; background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
+        .stat-label { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* --- Global Headings --- */
+        .section-header { text-align: center; margin-bottom: 55px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; }
+        .section-header p { color: var(--text-muted); margin-top: 8px; font-size: 1rem; }
+
+        /* --- Services Grid --- */
+        .services-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 90px; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 16px; padding: 32px; transition: 0.3s; }
+        .service-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); background: var(--bg-card-hover); }
+        .service-icon-box { width: 52px; height: 52px; border-radius: 12px; background: rgba(6, 182, 212, 0.1); color: var(--neon-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 22px; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .service-card p { color: var(--text-muted); font-size: 0.92rem; }
+
+        /* --- Tech Stack --- */
+        .skills-box { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 20px; padding: 40px; margin-bottom: 90px; }
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .skill-tag { background: var(--bg-card); border: 1px solid var(--border-line); color: var(--text-white); padding: 10px 22px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .skill-tag:hover { border-color: var(--neon-green); color: var(--neon-green); }
+
+        /* --- Horizontal Projects Cards --- */
+        .project-scroll { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 25px; scroll-snap-type: x mandatory; }
+        .project-scroll::-webkit-scrollbar { height: 8px; }
+        .project-scroll::-webkit-scrollbar-thumb { background: var(--border-line); border-radius: 10px; }
+        .project-scroll::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+        
+        .project-item { min-width: 340px; max-width: 340px; background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 16px; padding: 20px; scroll-snap-align: start; flex-shrink: 0; transition: 0.3s; }
+        .project-item:hover { border-color: var(--neon-purple); transform: translateY(-5px); }
+        .project-cover { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 16px; }
+        .project-item h3 { font-size: 1.25rem; margin-bottom: 8px; }
+        .project-item p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px; }
+
+        /* --- Hackathons --- */
+        .hackathon-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 90px; }
+        .hackathon-card { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 16px; padding: 28px; display: flex; gap: 20px; align-items: center; }
+        .hackathon-icon { font-size: 2.2rem; color: #f59e0b; }
+
+        /* --- Contact Block --- */
+        .contact-section { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 24px; padding: 50px 30px; margin-bottom: 90px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; text-align: center; }
+        .contact-card { padding: 24px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-line); }
+        .contact-card i { font-size: 2rem; color: var(--neon-cyan); margin-bottom: 14px; }
+        .contact-card h4 { margin-bottom: 6px; font-size: 1.1rem; }
+        .contact-card a, .contact-card p { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+        .contact-card a:hover { color: var(--neon-green); }
+
+        /* --- Footer --- */
+        footer { background: #030712; border-top: 1px solid var(--border-line); padding: 35px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-details h1 { font-size: 2.5rem; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-box">
+            <a href="#" class="logo">Haider<span>.dev</span></a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link active"><i class="fa-solid fa-user"></i> About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link"><i class="fa-solid fa-cube"></i> Services <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="#services"><i class="fa-solid fa-code"></i> What We Offer</a>
+                        <a href="#skills"><i class="fa-solid fa-microchip"></i> Tech Stack</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link"><i class="fa-solid fa-layer-group"></i> Work <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="#client-projects"><i class="fa-solid fa-briefcase"></i> Client Projects</a>
+                        <a href="#solo-projects"><i class="fa-solid fa-laptop-code"></i> Personal Engineering</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#hackathons" class="nav-link"><i class="fa-solid fa-trophy"></i> Hackathons</a>
+                </li>
+            </ul>
+
+            <a href="#contact" class="btn-hire">Contact / Hire</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-avatar">
+                <div class="avatar-ring">
+                    <img src="/images/profile.jpeg" alt="Haider Ali Profile" class="avatar-img" onerror="this.src='https://via.placeholder.com/280x280/1e293b/10b981?text=Haider+Ali'">
+                </div>
+            </div>
+            
+            <div class="hero-details">
+                <div class="status-badge"><i class="fa-solid fa-circle-dot"></i> Open for Hiring & Freelance Work</div>
+                <h1>Architecting Web Solutions & <span>Client Platforms</span></h1>
+                <p>Hi, I'm Haider Ali — CS Engineer specialized in building full-stack web applications, e-commerce stores, custom admin panels, and database systems. I solve core tech problems for companies and clients alike.</p>
+                
+                <!-- Social Bar -->
+                <div class="social-links">
+                    <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://leetcode.com" target="_blank" class="social-btn" title="LeetCode"><i class="fa-solid fa-code"></i></a>
+                    <a href="https://wa.me/910000000000" target="_blank" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#contact" class="btn-hire">Let's Discuss Project</a>
+                    <a href="#projects" class="btn-hire" style="background: transparent; border: 1px solid var(--border-line); color: #fff; box-shadow: none;">Browse Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-num">8+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">2+ Yrs</div>
+                <div class="stat-label">Experience</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">8+</div>
+                <div class="stat-label">Client Deliveries</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">Core Projects</div>
+            </div>
+        </div>
+
+        <!-- Services Offered -->
+        <section id="services">
+            <div class="section-header">
+                <h2>Services & Solutions</h2>
+                <p>Custom full-stack web solutions, backend handling, and dynamic deployments</p>
+            </div>
+
+            <div class="services-wrapper">
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3>E-Commerce Web Apps</h3>
+                    <p>Complete web stores featuring inventory controls, shopping carts, checkout workflows, and payment gateway options.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Admin Dashboards</h3>
+                    <p>Role-based control management panels with live charts, dynamic data filtering, and automated report generation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-database"></i></div>
+                    <h3>Database & API Architecture</h3>
+                    <p>Designing REST APIs, schema structures, and dynamic queries across MongoDB, PostgreSQL, and SQL environments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-brain"></i></div>
+                    <h3>AI & ML Integration</h3>
+                    <p>Integrating machine learning analytics models and automated decision pipelines into existing full-stack web applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-globe"></i></div>
+                    <h3>Live Google Launch & SEO</h3>
+                    <p>Domain configuration, SSL deployment, search engine indexation, and speed optimization for higher visibility.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-laptop"></i></div>
+                    <h3>Hotel & Field Software</h3>
+                    <p>Tailored operations software for hotel bookings, inventory tracking, and mobile-linked spatial field collectors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section id="skills">
+            <div class="section-header">
+                <h2>Technical Toolkit</h2>
+                <p>Technologies & tools used to engineer production solutions</p>
+            </div>
+            <div class="skills-box">
+                <div class="skills-wrap">
+                    <span class="skill-tag"><i class="fa-brands fa-node-js" style="color: #10b981;"></i> Node.js</span>
+                    <span class="skill-tag"><i class="fa-solid fa-server" style="color: #06b6d4;"></i> Express.js</span>
+                    <span class="skill-tag"><i class="fa-brands fa-react" style="color: #61dafb;"></i> React.js</span>
+                    <span class="skill-tag"><i class="fa-solid fa-code" style="color: #f59e0b;"></i> EJS Template Engine</span>
+                    <span class="skill-tag"><i class="fa-brands fa-envira" style="color: #10b981;"></i> MongoDB</span>
+                    <span class="skill-tag"><i class="fa-solid fa-database" style="color: #06b6d4;"></i> PostgreSQL / SQL</span>
+                    <span class="skill-tag"><i class="fa-solid fa-fire" style="color: #f59e0b;"></i> Firebase</span>
+                    <span class="skill-tag"><i class="fa-brands fa-android" style="color: #a4c639;"></i> Android Studio / Java</span>
+                    <span class="skill-tag"><i class="fa-brands fa-python" style="color: #3b82f6;"></i> Python / ML Models</span>
+                    <span class="skill-tag"><i class="fa-solid fa-network-wired"></i> RESTful API Design</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase -->
+        <section id="projects">
+            <div id="client-projects" style="margin-bottom: 55px;">
+                <div style="margin-bottom: 25px;">
+                    <h2 style="font-size: 1.8rem;">Client Deliverables</h2>
+                    <p style="color: var(--text-muted);">Slide horizontally to view live client projects →</p>
+                </div>
+
+                <div class="project-scroll">
+                    <div class="project-item">
+                        <img src="/images/advitum.png" alt="AdVitum Healthcare" class="project-cover" onerror="this.src='https://via.placeholder.com/340x180/1e293b/06b6d4?text=AdVitum+Healthcare'">
+                        <h3>AdVitum Healthcare Platform</h3>
+                        <p>B2B wholesale medical catalog platform simplifying order placements and product indexation.</p>
+                        <a href="#contact" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600; font-size: 0.85rem;">View Solution Details <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-item">
+                        <img src="/images/admin-panel.png" alt="Admin Dashboard" class="project-cover" onerror="this.src='https://via.placeholder.com/340x180/1e293b/a855f7?text=Admin+Dashboard'">
+                        <h3>E-Commerce Control Center</h3>
+                        <p>Back-office analytics dashboard with live inventory updates and status management.</p>
+                        <a href="#contact" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600; font-size: 0.85rem;">View Solution Details <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="solo-projects" style="margin-bottom: 90px;">
+                <div style="margin-bottom: 25px;">
+                    <h2 style="font-size: 1.8rem;">Engineering Projects</h2>
+                    <p style="color: var(--text-muted);">Personal architectural builds & technical projects →</p>
+                </div>
+
+                <div class="project-scroll">
+                    <div class="project-item">
+                        <img src="/images/stayfound.png" alt="StayFound Rental Marketplace" class="project-cover" onerror="this.src='https://via.placeholder.com/340x180/1e293b/10b981?text=Rental+Marketplace'">
+                        <h3>StayFound Rental Platform</h3>
+                        <p>Full-stack property rental platform supporting sessions, booking flows, and property management.</p>
+                        <a href="#contact" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600; font-size: 0.85rem;">View Architecture <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-item">
+                        <img src="/images/survey-app.png" alt="Geospatial Field Data Tracker" class="project-cover" onerror="this.src='https://via.placeholder.com/340x180/1e293b/f59e0b?text=Field+Tracker'">
+                        <h3>Geospatial Field Data Tracker</h3>
+                        <p>Android spatial tracking mobile application linked to dynamic Node.js backend APIs.</p>
+                        <a href="#contact" style="color: var(--neon-cyan); text-decoration: none; font-weight: 600; font-size: 0.85rem;">View Architecture <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hackathons -->
+        <section id="hackathons">
+            <div class="section-header">
+                <h2>Hackathons & Innovations</h2>
+                <p>Prototypes built during engineering challenges & hackathons</p>
+            </div>
+            
+            <div class="hackathon-wrapper">
+                <div class="hackathon-card">
+                    <div class="hackathon-icon"><i class="fa-solid fa-award"></i></div>
+                    <div>
+                        <h3>Smart India Hackathon (SIH)</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Built tech solution prototypes for problem statements under competitive conditions.</p>
+                    </div>
+                </div>
+                <div class="hackathon-card">
+                    <div class="hackathon-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div>
+                        <h3>Resign Guard Project Build</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Machine learning & full-stack integration developed during team hackathons.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Available for full-time developer roles, tech consulting, and freelance client work</p>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h4>Email</h4>
+                        <a href="mailto:haider.dev@example.com">haider.dev@example.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <h4>WhatsApp / Mobile</h4>
+                        <a href="https://wa.me/910000000000">+91 00000 00000</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h4>Location</h4>
+                        <p>Vadodara / Remote Available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Haider Ali. Built with Node.js, Express & EJS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
