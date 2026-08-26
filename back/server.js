@@ -20,6 +20,26 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+app.get('/services', (req, res) => {
+  res.render('services');
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects');
+});
+
+app.get('/workflow', (req, res) => {
+  res.render('workflow');
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
+app.get('/enquiry', (req, res) => {
+  res.render('enquiry');
+});
+
 // Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
