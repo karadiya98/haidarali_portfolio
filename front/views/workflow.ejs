@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haider Ali | Development Workflow & Engineering Process</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #050811;
+            --bg-surface: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+            
+            --neon-green: #10b981;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #a855f7;
+            
+            --text-white: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-line: rgba(255, 255, 255, 0.08);
+            
+            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, .logo, .step-num, .slogan-tag { font-family: 'Space Grotesk', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-white); 
+            overflow-x: hidden; 
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Header Navigation --- */
+        header { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(5, 8, 17, 0.85); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--border-line); 
+            z-index: 1000; 
+            padding: 16px 0; 
+        }
+        .nav-box { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            background: var(--main-gradient); 
+            
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+
+        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+
+        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Page Header Banner --- */
+        .page-header { text-align: center; padding: 60px 0 40px; }
+        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        .gradient-text { background: var(--main-gradient); -webkit-text-fill-color: transparent; }
+        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
+        .page-header p { color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1rem; }
+
+        /* --- ZIGZAG WORKFLOW SECTION --- */
+        .workflow-section { position: relative; padding: 40px 0 90px; }
+        .zigzag-wrapper { position: relative; max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; }
+
+        /* Central Vertical Base Line */
+        .zigzag-line-bg {
+            position: absolute;
+            top: 25px;
+            bottom: 25px;
+            left: 50%;
+            width: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        /* Dynamic Animated Fill Progress Line */
+        .zigzag-line-fill {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            width: 4px;
+            height: 0%;
+            background: var(--main-gradient);
+            transform: translateX(-50%);
+            border-radius: 4px;
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transition: height 0.15s linear;
+        }
+
+        /* Zigzag Step Layout */
+        .zigzag-item {
+            position: relative;
+            width: 50%;
+            margin-bottom: 70px;
+            display: flex;
+        }
+
+        /* Left Side Cards */
+        .zigzag-item.left {
+            align-self: flex-start;
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+
+        /* Right Side Cards */
+        .zigzag-item.right {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 50px;
+        }
+
+        /* Center Node Icon */
+        .zigzag-node {
+            position: absolute;
+            top: 15px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 2px solid var(--border-line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            z-index: 10;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .zigzag-item.left .zigzag-node {
+            right: -26px;
+        }
+
+        .zigzag-item.right .zigzag-node {
+            left: -26px;
+        }
+
+        /* Glowing Node State */
+        .zigzag-item.active .zigzag-node {
+            border-color: var(--neon-cyan);
+            color: #000;
+            background: var(--main-gradient);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.7);
+        }
+
+        /* Step Card Styling */
+        .zigzag-card {
+            width: 100%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            backdrop-filter: blur(14px);
+            transition: all 0.4s ease;
+        }
+
+        .zigzag-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.5);
+            background: var(--bg-card-hover);
+        }
+
+        .zigzag-item.active .zigzag-card {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Visual Connectors between Node & Card */
+        .zigzag-card::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 25px;
+            height: 2px;
+            background: var(--border-line);
+            transition: 0.4s;
+        }
+
+        .zigzag-item.left .zigzag-card::before { right: -25px; }
+        .zigzag-item.right .zigzag-card::before { left: -25px; }
+
+        .zigzag-item.active .zigzag-card::before {
+            background: var(--neon-cyan);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* Card Content Components */
+        .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .step-num { font-size: 2.2rem; font-weight: 700; color: var(--neon-green); line-height: 1; }
+        .step-badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color: var(--neon-cyan); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+
+        .zigzag-card h3 { font-size: 1.35rem; margin-bottom: 12px; color: var(--text-white); }
+        .zigzag-card p { color: var(--text-muted); font-size: 0.94rem; line-height: 1.65; }
+
+        /* Feature Tags inside Card */
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+        .tag-pill { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--neon-green); padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; }
+
+        /* --- Footer --- */
+        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 60px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
+        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
+        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
+        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+
+        /* --- Responsive Design (Mobile Timeline Adjustments) --- */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .page-header h1 { font-size: 2.4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-deep); padding: 20px; border-bottom: 1px solid var(--border-line); }
+            .nav-menu.active { display: flex; }
+            .dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; border: none; padding-left: 15px; }
+            .menu-toggle { display: block; }
+            .page-header h1 { font-size: 2rem; }
+            
+            /* Responsive Single-Column Zigzag for Mobile */
+            .zigzag-line-bg, .zigzag-line-fill { left: 24px; transform: none; }
+            .zigzag-item, .zigzag-item.left, .zigzag-item.right { width: 100%; align-self: flex-start; justify-content: flex-start; padding-left: 65px; padding-right: 0; }
+            .zigzag-node, .zigzag-item.left .zigzag-node, .zigzag-item.right .zigzag-node { left: 0; right: auto; width: 48px; height: 48px; }
+            .zigzag-card::before { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .page-header h1 { font-size: 1.7rem; }
+            .zigzag-card { padding: 22px; }
+            .step-num { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-box">
+            <a href="/" class="btn-enquiry">Portfolio</a>
+            <i class="fa-solid fa-bars menu-toggle" id="menuToggle"></i>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="/" class="nav-link">About</a></li>
+                <li class="nav-item">
+                    <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="services">What We Offer</a>
+                        <a href="services#why-choose-us">Why Choose Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="projects">Client Projects</a>
+                        <a href="projects">Personal Builds</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="workflow" class="nav-link active">Workflow</a></li>
+                <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <span class="slogan-tag">Execution Roadmap</span>
+            <h1>Our Engineering <span class="gradient-text">Workflow</span></h1>
+            <p>A systematic, step-by-step methodology to transform your technical vision into scalable, high-performance web applications.</p>
+        </section>
+
+        <section class="workflow-section">
+            <div class="zigzag-wrapper" id="zigzagWrapper">
+                <!-- Background Base Line & Scroll Progress Fill -->
+                <div class="zigzag-line-bg"></div>
+                <div class="zigzag-line-fill" id="zigzagProgress"></div>
+
+                <!-- Step 1 (Left) -->
+                <div class="zigzag-item left">
+                    <div class="zigzag-node"><i class="fa-solid fa-comments"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">01</span>
+                            <span class="step-badge">Phase 1</span>
+                        </div>
+                        <h3>Requirement Gathering & Business Scope</h3>
+                        <p>We begin by conducting an in-depth discovery session to understand your target audience, core business requirements, and overarching digital strategy.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 (Right) -->
+                <div class="zigzag-item right">
+                    <div class="zigzag-node"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">02</span>
+                            <span class="step-badge">Phase 2</span>
+                        </div>
+                        <h3>Market Research & Tech Stack Selection</h3>
+                        <p>We perform detailed competitor research and feasibility audits to select the ideal backend architecture, databases, and modern frontend frameworks for long-term scalability.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 (Left) -->
+                <div class="zigzag-item left">
+                    <div class="zigzag-node"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">03</span>
+                            <span class="step-badge">Phase 3</span>
+                        </div>
+                        <h3>Strategic Consulting & Cost Optimization</h3>
+                        <p>We present an optimized architectural roadmap tailored to eliminate technical debt, maximize efficiency, and significantly reduce total development and server infrastructure costs.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 (Right) -->
+                <div class="zigzag-item right">
+                    <div class="zigzag-node"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">04</span>
+                            <span class="step-badge">Phase 4</span>
+                        </div>
+                        <h3>Budgeting & Deliverable Alignment</h3>
+                        <p>We lock down transparent project milestones and define core enterprise features included in your package:</p>
+                        <div class="feature-tags">
+                            <span class="tag-pill">Custom .com Domain</span>
+                            <span class="tag-pill">Secure Admin Panel</span>
+                            <span class="tag-pill">Analytics Dashboard</span>
+                            <span class="tag-pill">Role-Based Auth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 (Left) -->
+                <div class="zigzag-item left">
+                    <div class="zigzag-node"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">05</span>
+                            <span class="step-badge">Phase 5</span>
+                        </div>
+                        <h3>UI/UX Architecture & Client Revisions</h3>
+                        <p>We craft interactive UI/UX wireframes and prototypes, integrating client feedback through rapid redesign cycles until every detail meets your vision.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 (Right) -->
+                <div class="zigzag-item right">
+                    <div class="zigzag-node"><i class="fa-solid fa-code"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">06</span>
+                            <span class="step-badge">Phase 6</span>
+                        </div>
+                        <h3>Full-Stack Engineering & Development</h3>
+                        <p>We write clean, modular, and maintainable code—building secure backend APIs, optimizing database schemas, and engineering responsive frontends.</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 (Left) -->
+                <div class="zigzag-item left">
+                    <div class="zigzag-node"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">07</span>
+                            <span class="step-badge">Phase 7</span>
+                        </div>
+                        <h3>Prototyping, SEO & Security Audits</h3>
+                        <p>Before launch, your system undergoes end-to-end QA testing, speed optimization, search engine optimization (SEO), and vulnerability assessments.</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 (Right) -->
+                <div class="zigzag-item right">
+                    <div class="zigzag-node"><i class="fa-solid fa-rocket"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">08</span>
+                            <span class="step-badge">Phase 8</span>
+                        </div>
+                        <h3>Custom Domain Deployment & Handoff</h3>
+                        <p>We execute zero-downtime cloud deployment, configure your custom `.com` domain with SSL certificates, and deliver a fully operational application.</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-item left">
+                    <div class="zigzag-node"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <div class="zigzag-card">
+                        <div class="card-meta">
+                            <span class="step-num">09</span>
+                            <span class="step-badge">Phase 9</span>
+                        </div>
+                        <h3>Ready to use in real world</h3>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Haider.dev</a>
+                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Profiles</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Direct Enquiry</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
+                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
+                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
+        // Scroll-Driven Dynamic Zigzag Progress & Node Illumination
+        const zigzagWrapper = document.getElementById('zigzagWrapper');
+        const zigzagProgress = document.getElementById('zigzagProgress');
+        const zigzagItems = document.querySelectorAll('.zigzag-item');
+
+        function handleScrollProgress() {
+            const wrapperRect = zigzagWrapper.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate progress percentage down the zigzag container
+            const startY = wrapperRect.top;
+            const totalHeight = wrapperRect.height;
+            const currentPosition = (viewportHeight / 2) - startY;
+
+            let percentage = (currentPosition / totalHeight) * 100;
+            percentage = Math.max(0, Math.min(100, percentage));
+
+            zigzagProgress.style.height = percentage + '%';
+
+            // Illuminate cards as the center fill line reaches them
+            zigzagItems.forEach((item) => {
+                const itemRect = item.getBoundingClientRect();
+                if (itemRect.top <= viewportHeight * 0.65) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollProgress);
+        window.addEventListener('load', handleScrollProgress);
+    </script>
+</body>
+</html>

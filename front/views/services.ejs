@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haider Ali | Services | What We Offer & Why Choose Us</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #050811;
+            --bg-surface: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+            
+            --neon-green: #10b981;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #a855f7;
+            
+            --text-white: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-line: rgba(255, 255, 255, 0.08);
+            
+            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, .logo, .stat-num, .slogan-tag, .tab-btn { font-family: 'Space Grotesk', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-white); 
+            overflow-x: hidden; 
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Fixed Header Navigation --- */
+        header { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(5, 8, 17, 0.85); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--border-line); 
+            z-index: 1000; 
+            padding: 16px 0; 
+        }
+        .nav-box { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            background: var(--main-gradient); 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+
+        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+
+        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Page Header Banner --- */
+        .page-header { text-align: center; padding: 60px 0 30px; }
+        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        .gradient-text { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
+        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
+        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+
+        /* --- TAB NAVIGATION TOGGLE --- */
+        .tabs-wrapper { display: flex; justify-content: center; margin: 40px 0 50px; }
+        .tab-container { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 40px; padding: 6px; display: flex; gap: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+        .tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 12px 30px; font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+        .tab-btn i { font-size: 0.9rem; }
+        
+        .tab-btn.active { background: var(--main-gradient); color: #000; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+
+        /* --- TAB CONTENT SECTIONS --- */
+        .tab-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .tab-content.active { display: block; opacity: 1; }
+
+        /* Grid for "What We Offer" */
+        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 70px; }
+        .offer-card { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 18px; padding: 28px; transition: 0.3s; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+        .offer-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); background: var(--bg-card-hover); }
+        
+        /* Modernized Graphics within Offer Cards */
+        .card-graphic {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-line);
+        }
+        .card-graphic i {
+            position: absolute;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--neon-green);
+            opacity: 0.8;
+            z-index: 2;
+        }
+        .card-graphic::after {
+            content: '';
+            position: absolute;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            filter: blur(35px);
+            opacity: 0.2;
+            top: -20px; left: -20px;
+        }
+        .offer-card h3 { font-size: 1.25rem; margin-bottom: 10px; color: #fff; }
+        .offer-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+        /* --- WHY CHOOSE US LAYOUT --- */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 70px; }
+        .why-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 18px; padding: 30px; transition: 0.3s; position: relative; }
+        .why-card:hover { border-color: var(--neon-purple); transform: translateY(-5px); }
+        
+        .why-number { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #000;
+            margin-bottom: 16px; 
+            width: fit-content;
+        }
+        .why-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-white); }
+        .why-card p { color: var(--text-muted); font-size: 0.92rem; }
+        .highlight-text { color: var(--neon-green); font-weight: 600; }
+        .highlight-secondary { color: var(--neon-cyan); font-weight: 600; }
+
+        /* --- FOOTER --- */
+        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 60px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
+        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
+        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
+        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .page-header h1 { font-size: 2.4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-deep); padding: 20px; border-bottom: 1px solid var(--border-line); }
+            .nav-menu.active { display: flex; }
+            .dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; border: none; padding-left: 15px; }
+            .menu-toggle { display: block; }
+            .page-header h1 { font-size: 2rem; }
+            .tab-btn { padding: 10px 18px; font-size: 0.88rem; }
+            .why-grid, .offer-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .tab-container { width: 100%; justify-content: center; }
+            .tab-btn { padding: 10px 12px; font-size: 0.8rem; gap: 5px; }
+            .page-header h1 { font-size: 1.7rem; }
+            .why-card, .offer-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+        <div class="container nav-box">
+            <a href="/" class="btn-enquiry">Portfolio</a>
+            <i class="fa-solid fa-bars menu-toggle" id="menuToggle"></i>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="/" class="nav-link" >About</a></li>
+                <li class="nav-item">
+                    <a href="services" class="nav-link active">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="services">What We Offer</a>
+                        <a href="services">Why Choose Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="projects">Client Projects</a>
+                        <a href="projects">Personal Builds</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
+                <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="page-header">
+            <strong class="slogan-tag">Engineering Digital Scale</strong>
+            <h1>Expert Technical <em  style="font-style: normal;">Services</em></h1>
+            <p>Node.js, React, Java & API integrations. Transforming complex business requirements into robust engineered systems.</p>
+        </section>
+
+        <div class="tabs-wrapper">
+            <div class="tab-container">
+                <button class="tab-btn active" id="offerTabBtn">
+                    <i class="fa-solid fa-cubes"></i> What We Offer
+                </button>
+                <button class="tab-btn" id="whyTabBtn">
+                    <i class="fa-solid fa-shield-halved"></i> Why Choose Us
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-content active" id="whatWeOfferContent">
+            <div class="offer-grid">
+                
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3>Application Development</h3>
+                    <p>Native & hybrid mobile applications built using Java & Firebase. Offline-enabled functionality, geolocation tracking, and real-time backend synchronization.</p>
+                </div>
+
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3>Custom Websites</h3>
+                    <p>High-performance landing pages optimized for search engines, built with fully responsive layouts and modern design aesthetics.</p>
+                </div>
+
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3>Full-Stack Web Apps</h3>
+                    <p>Scalable web portals engineered with Node.js, Express, React, and MongoDB. Structured for high security and seamless dynamic management.</p>
+                </div>
+
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3>Admin Panels</h3>
+                    <p>Intuitive backend management dashboards allowing non-technical team members to securely update live inventory and database records.</p>
+                </div>
+
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboards</h3>
+                    <p>Interactive data visualization interfaces displaying inventory metrics, operational analytics, and key business performance indicators.</p>
+                </div>
+
+                <div class="offer-card">
+                    <div class="card-graphic">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3>UI/UX & Interactive Design</h3>
+                    <p>Human-centered user interface designs incorporating modern dark glassmorphism themes and fluid micro-interactions.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tab-content" id="whyChooseUsContent">
+            <div class="why-grid">
+                
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">01</div>
+                    <h3>Engineering First Approach</h3>
+                    <p>We do not rely on fragile pre-made templates or bloatware. <span class="highlight-text">We engineer custom solutions from the ground up</span>—building modular code architectures, optimized APIs, and scalable databases tailored to your business goals.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">02</div>
+                    <h3>Cost-Optimized Infrastructure</h3>
+                    <p>Quality software does not require inflated costs. <span class="highlight-text">We focus on long-term cost efficiency</span> by optimizing cloud resources and backend server architectures to minimize operational overhead.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">03</div>
+                    <h3>Guaranteed Client Satisfaction</h3>
+                    <p>Your satisfaction is our primary benchmark. <span class="highlight-secondary">We maintain strict quality standards</span> and work iteratively through refinements until the platform completely meets your expectations.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">04</div>
+                    <h3>End-to-End Infrastructure Handling</h3>
+                    <p>Eliminate the hassle of managing multiple technical vendors. <span class="highlight-text">We handle domain setup, cloud hosting deployments, and custom business email setups</span> in a single turn-key package.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">05</div>
+                    <h3>Production-Ready Security & Speed</h3>
+                    <p>Deploy with complete confidence. <span class="highlight-secondary">Every platform undergoes rigorous security hardening</span>, query optimization, and performance tuning before going live.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="btn-enquiry why-number">06</div>
+                    <h3>User-Centric & Intuitive Systems</h3>
+                    <p>From complex B2B platforms to operational tools, <span class="highlight-secondary">we design simple, intuitive user interfaces</span> that non-technical teams can manage effortlessly from day one.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Haider.dev</a>
+                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Profiles</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Direct Enquiry</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
+                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
+                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
+        // Tab Switching Logic
+        const offerTabBtn = document.getElementById('offerTabBtn');
+        const whyTabBtn = document.getElementById('whyTabBtn');
+        const whatWeOfferContent = document.getElementById('whatWeOfferContent');
+        const whyChooseUsContent = document.getElementById('whyChooseUsContent');
+
+        function switchTab(showOffer) {
+            if (showOffer) {
+                offerTabBtn.classList.add('active');
+                whatWeOfferContent.classList.add('active');
+                whyTabBtn.classList.remove('active');
+                whyChooseUsContent.classList.remove('active');
+            } else {
+                whyTabBtn.classList.add('active');
+                whyChooseUsContent.classList.add('active');
+                offerTabBtn.classList.remove('active');
+                whatWeOfferContent.classList.remove('active');
+            }
+        }
+
+        offerTabBtn.addEventListener('click', () => switchTab(true));
+        whyTabBtn.addEventListener('click', () => switchTab(false));
+
+        // URL Deep-linking handler
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#why-choose-us') {
+                switchTab(false);
+            }
+        });
+    </script>
+</body>
+</html>

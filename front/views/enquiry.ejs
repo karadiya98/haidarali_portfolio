@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haider Ali | Instant Project Enquiry</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050811;
+            --bg-surface: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+
+            --neon-green: #10b981;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #a855f7;
+
+            --text-white: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-line: rgba(255, 255, 255, 0.08);
+
+            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, .logo, .slogan-tag, .form-title { font-family: 'Space Grotesk', sans-serif; }
+
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-white); 
+            overflow-x: hidden; 
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            padding-bottom: 0px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Desktop Header Navigation --- */
+        header { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(5, 8, 17, 0.85); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--border-line); 
+            z-index: 1000; 
+            padding: 16px 0; 
+        }
+        .nav-box { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            background: var(--main-gradient); 
+            
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+
+        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+
+        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+
+        /* --- Mobile Bottom Navigation --- */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: rgba(5, 8, 17, 0.92);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-line);
+            z-index: 2000;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.72rem;
+            gap: 4px;
+            transition: 0.3s;
+            width: 20%;
+        }
+
+        .mobile-nav-link i { font-size: 1.2rem; }
+        .mobile-nav-link.active, .mobile-nav-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* --- Page Header Banner --- */
+        .page-header { text-align: center; padding: 50px 0 30px; }
+        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        .gradient-text { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
+        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
+        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+
+        /* --- Enquiry Section Layout --- */
+        .enquiry-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+            margin: 20px 0 70px;
+        }
+
+        .benefits-card-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 18px;
+            padding: 24px;
+            backdrop-filter: blur(14px);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: var(--neon-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-details h4 {
+            font-size: 1.1rem;
+            color: var(--text-white);
+            margin-bottom: 4px;
+        }
+
+        .benefit-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Form Glass Container --- */
+        .form-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(16px);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--text-white);
+        }
+
+        .form-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            background: rgba(5, 8, 17, 0.7);
+            border: 1px solid var(--border-line);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-select option {
+            background: #050811;
+            color: #fff;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
+        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
+        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
+        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 992px) {
+            .enquiry-wrapper { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .page-header h1 { font-size: 2.3rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-bottom: 70px; }
+            .desktop-nav { display: none; }
+            .mobile-bottom-nav { display: flex; }
+            .page-header { padding: 30px 0 20px; }
+            .page-header h1 { font-size: 1.9rem; }
+            .form-grid-2 { grid-template-columns: 1fr; }
+            .form-container { padding: 24px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .page-header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Desktop Header Navigation -->
+    <header class="desktop-nav">
+        <div class="container nav-box">
+            <a href="/" class="logo">Haider.dev</a>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link">About</a></li>
+                <li class="nav-item">
+                    <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="services">What We Offer</a>
+                        <a href="services#why-choose-us">Why Choose Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="projects">Client Projects</a>
+                        <a href="projects">Personal Builds</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
+                <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="/" class="mobile-nav-link">
+            <i class="fa-solid fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="services" class="mobile-nav-link">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Services</span>
+        </a>
+        <a href="projects" class="mobile-nav-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+        <a href="workflow" class="mobile-nav-link">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Workflow</span>
+        </a>
+        <a href="contact" class="mobile-nav-link">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <span class="slogan-tag">Start Your Project</span>
+            <h1>Request a Project <span class="gradient-text">Proposal</span></h1>
+            <p>Tell me about your technical goals, target timeline, and budget. Get a detailed technical estimate within 24 hours.</p>
+        </section>
+
+        <section class="enquiry-wrapper">
+            <!-- Left Benefits Info Cards -->
+            <div class="benefits-card-box">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <div class="benefit-details">
+                        <h4>Transparent Project Scope</h4>
+                        <p>No hidden costs. Every milestone, package feature, and technical deliverable is clearly documented.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="benefit-details">
+                        <h4>Full-Stack Engineering</h4>
+                        <p>Tailored technology stack recommendations optimized for performance, scale, and cost control.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="benefit-details">
+                        <h4>Deployment Ready</h4>
+                        <p>Includes free .com domain setup, custom backend panel, database configuration, and post-launch support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Detailed Project Enquiry Form -->
+            <div class="form-container">
+                <h3 class="form-title">Project Scope Details</h3>
+                <p class="form-subtitle">Share your requirements for an accurate proposal and timeline estimation.</p>
+
+                <form action="#" method="POST">
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. Alex Turner" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Business Email</label>
+                            <input type="email" class="form-input" placeholder="alex@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Project Type</label>
+                            <select class="form-select" required>
+                                <option value="" disabled selected>Select Primary Need</option>
+                                <option value="fullstack">Full-Stack Web App (MERN/Django)</option>
+                                <option value="b2b">B2B/Wholesale E-Commerce</option>
+                                <option value="mobile">Android / Mobile App</option>
+                                <option value="redesign">UI/UX Redesign & Optimization</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estimated Budget Range</label>
+                            <select class="form-select">
+                                <option value="" disabled selected>Select Budget</option>
+                                <option value="starter">Starter (< ₹25k / $300)</option>
+                                <option value="growth">Growth (₹25k - ₹60k / $300 - $800)</option>
+                                <option value="enterprise">Custom Enterprise (₹60k+ / $800+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Project Overview & Requirements</label>
+                        <textarea class="form-textarea" placeholder="Describe the core features, key objectives, and any reference sites..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enquiry" style="width: 100%; justify-content: center; padding: 14px;">
+                        <i class="fa-solid fa-rocket"></i> Submit Project Request
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Haider.dev</a>
+                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Profiles</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Direct Enquiry</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
+                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
+                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
