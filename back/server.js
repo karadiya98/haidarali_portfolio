@@ -4,6 +4,7 @@ const app = express();
 
 // Configure View Engine to EJS
 app.set('view engine', 'ejs');
+app.use(express.static('public')); 
 
 // Point views folder directly to front/views
 app.set('views', path.join(__dirname, '../front/views'));

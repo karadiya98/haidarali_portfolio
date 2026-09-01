@@ -253,38 +253,160 @@
             .page-header h1 { font-size: 1.5rem; }
             .project-card.open .project-details { padding: 14px 16px; }
         }
+       
+:root {
+    --bg-deep: #050811;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --bg-card-hover: rgba(51, 65, 85, 0.85);
+    --neon-green: #10b981;
+    --neon-cyan: #06b6d4;
+    --neon-purple: #a855f7;
+    --text-white: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-line: rgba(255, 255, 255, 0.08);
+    --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+.logo, .footer-title { font-family: 'Space Grotesk', sans-serif; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- Header / Top Navigation --- */
+header { 
+    position: sticky; 
+    top: 0; 
+    background: rgba(5, 8, 17, 0.85); 
+    backdrop-filter: blur(20px); 
+    border-bottom: 1px solid var(--border-line); 
+    z-index: 1000; 
+    padding: 16px 0; 
+}
+.nav-box { display: flex; justify-content: space-between; align-items: center; }
+.logo { 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+    text-decoration: none; 
+    background: var(--main-gradient); 
+    -webkit-text-fill-color: transparent; 
+}
+.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-item { position: relative; }
+.nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+.nav-link:hover, .nav-link.active { color: #fff; }
+
+.dropdown { 
+    position: absolute; top: 120%; left: 0; 
+    background: var(--bg-card); backdrop-filter: blur(15px); 
+    border: 1px solid var(--border-line); border-radius: 12px; 
+    min-width: 200px; padding: 8px 0; opacity: 0; 
+    visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; 
+}
+.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+.dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+
+.btn-enquiry { 
+    background: var(--main-gradient); color: #000; padding: 10px 24px; 
+    border-radius: 30px; font-weight: 700; text-decoration: none; 
+    font-size: 0.9rem; transition: 0.3s; border: none; 
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; 
+}
+.btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+
+/* --- Mobile Bottom Navigation --- */
+.mobile-bottom-nav {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    height: 65px; background: rgba(5, 8, 17, 0.92);
+    backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
+    z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
+}
+.mobile-nav-link {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; color: var(--text-muted);
+    text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
+}
+.mobile-nav-link i { font-size: 1.2rem; }
+.mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
+
+/* --- Footer --- */
+footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
+.footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
+.footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
+.back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 992px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+}
+@media (max-width: 768px) {
+    body { padding-bottom: 70px; }
+    .mobile-bottom-nav { display: flex; }
+    .nav-menu { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+}
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-box">
-            <a href="/" class="btn-enquiry">Portfolio</a>
-            <i class="fa-solid fa-bars menu-toggle" id="menuToggle"></i>
+    <div class="container nav-box">
+        <a href="/" class="btn-enquiry">Haidar Ali</a>
 
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="/" class="nav-link">About</a></li>
-                <li class="nav-item">
-                    <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                    <div class="dropdown">
-                        <a href="services">What We Offer</a>
-                        <a href="services">Why Choose Us</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="projects" class="nav-link active">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                    <div class="dropdown">
-                        <a href="projects#client-projects">Client Projects</a>
-                        <a href="projects#personal-builds">Personal Builds</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
-                <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
-            </ul>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/" class="nav-link ">About</a></li>
+            <li class="nav-item">
+                <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                <div class="dropdown">
+                    <a href="services">What We Offer</a>
+                    <a href="services#why-choose-us">Why Choose Us</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="projects" class="nav-link active">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                <div class="dropdown">
+                    <a href="projects">Client Projects</a>
+                    <a href="projects">Personal Builds</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
+            <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
+        </ul>
 
-            <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
-        </div>
-    </header>
+        <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+    </div>
+</header>
+
+<nav class="mobile-bottom-nav">
+    <a href="/" class="mobile-nav-link ">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+    </a>
+    <a href="services" class="mobile-nav-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Services</span>
+    </a>
+    <a href="projects" class="mobile-nav-link active">
+        <i class="fa-solid fa-code"></i>
+        <span>Projects</span>
+    </a>
+    <a href="workflow" class="mobile-nav-link">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Workflow</span>
+    </a>
+    <a href="contact" class="mobile-nav-link">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact</span>
+    </a>
+</nav>
+
 
     <main class="container">
         <!-- Page Header Banner -->
@@ -323,26 +445,31 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">AdVitum Healthcare (Vadodara, India)</span>
+                                <span class="meta-value">Chappi (Gujarat, India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">B2B medical wholesale platform designed for streamlined inventory searches, bulk pricing queries, dynamic product catalogs, and automated inquiry routing.</span>
+                                <span class="meta-value">Developed a full-stack e-commerce web application with dynamic product selection, smooth cart management, and integrated secure online payments. Designed a comprehensive admin panel featuring real-time analytics for daily and monthly sales performance, revenue metrics, and user page views. Implemented complete order tracking and backend status updates to streamline business operations and user management. Optimized system architecture and responsive UI to deliver a seamless shopping experience across all device types.</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
                                 <div class="tech-stack">
+                                    <span class="tech-tag">React</span>
                                     <span class="tech-tag">Node.js</span>
                                     <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">MongoDB Atlas</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                    <span class="tech-tag">API's</span>
+                                    <span class="tech-tag">Razor Pay Api</span>
+                                    <span class="tech-tag">Render deploying</span>
                                     <span class="tech-tag">Tailwind CSS</span>
                                 </div>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://advitum.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/advitum-portal" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://tasneemmukhwas.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -362,26 +489,28 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Yash Domestic Centre (Surat, India)</span>
+                                <span class="meta-value">Palanpur (Gujarat, India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Geospatial tracking application integrated with Google Maps API and an interactive admin dashboard for field survey data logging, animal tracking, and real-time report mapping.</span>
+                                <span class="meta-value">Developed a full-stack Web application for a veterinary NGO to showcase public initiatives, track rescue journeys, and collect community reviews. Built a comprehensive admin panel featuring real-time analytics for daily donations, multi-branch tracking, and organizational workflow management. Designed an end-to-end recruitment module with dynamic job application forms to streamline volunteer and staff onboarding. Engineered a responsive visual showcase detailing animal rescue stories and donor contributions to enhance public transparency.</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
                                 <div class="tech-stack">
-                                    <span class="tech-tag">Java (Android)</span>
-                                    <span class="tech-tag">Firebase</span>
                                     <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Google Maps API</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">MongoDB Atlas</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                    <span class="tech-tag">API's</span>
                                 </div>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://yashapp.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Client Preview</a>
-                                    <a href="https://github.com/haiderali/yash-survey-app" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://yashdomestic.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -401,26 +530,31 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Unessa Foundation (Mumbai, India)</span>
+                                <span class="meta-value">Kanai (Gujarat,India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Internal management system for non-profit operations, handling volunteer registrations, NGO event tracking, community outreach programs, and donor reporting.</span>
+                                <span class="meta-value">Developed a full-stack e-commerce web application with dynamic product selection, smooth cart management, and integrated secure online payments. Designed a comprehensive admin panel featuring real-time analytics for daily and monthly sales performance, revenue metrics, and user page views. Implemented complete order tracking and backend status updates to streamline business operations and user management. Optimized system architecture and responsive UI to deliver a seamless shopping experience across all device types.</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
                                 <div class="tech-stack">
                                     <span class="tech-tag">React</span>
                                     <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">MongoDB</span>
-                                    <span class="tech-tag">Bootstrap</span>
+                                    <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">MongoDB Atlas</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                    <span class="tech-tag">API's</span>
+                                    <span class="tech-tag">Razor Pay Api</span>
+                                    <span class="tech-tag">Render deploying</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
                                 </div>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://unessa.org" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Live Platform</a>
-                                    <a href="https://github.com/haiderali/unessa-management" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://raahbar.onrender.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -440,26 +574,18 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Apex Transports (Ahmedabad, India)</span>
+                                <span class="meta-value">Vadodara (Gujarat, India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Custom freight management tool enabling transport dispatchers to manage vehicle fleets, generate automated consignment invoices, and calculate multi-city route tariffs.</span>
+                                <span class="meta-value">Engineered a high-performance geospatial mobile app and MERN admin panel to streamline real-time animal population tracking and field data collection. Integrated interactive Google Maps APIs and custom forms for field surveyors to log location data, dog sightings, and dynamic status updates. Built a centralized admin dashboard featuring live geographic visualization, branch-wise data filters, and daily field reporting metrics. Implemented secure REST APIs and spatial data analytics to enable seamless backend monitoring and automated field operations.</span>
                             </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                </div>
-                            </div>
+                            
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://apexlogistics.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Live System</a>
-                                    <a href="https://github.com/haiderali/apex-freight-engine" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://www.yashrecords.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -479,26 +605,27 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Apex Transports (Ahmedabad, India)</span>
+                                <span class="meta-value">Kanai (Gujarat, India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Custom freight management tool enabling transport dispatchers to manage vehicle fleets, generate automated consignment invoices, and calculate multi-city route tariffs.</span>
+                                <span class="meta-value">Engineered a high-impact B2B healthcare catalog platform designed for seamless product discovery and bulk order inquiries. Built an intuitive product showcase featuring detailed medical specifications, category filtering, and direct contact modules for client leads. Integrated an administrative backend to manage high-volume inventory listings, track incoming customer inquiries, and monitor user engagement. Designed a clean, fully responsive user interface optimized for healthcare providers, wholesalers, and fast commercial communication.</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
                                 <div class="tech-stack">
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
+                                    <span class="tech-tag">express</span>
+                                    <span class="tech-tag">nodej.s</span>
+                                    <span class="tech-tag">mongodb atlas</span>
+                                    <span class="tech-tag">ejs</span>
+                                     <span class="tech-tag">middleware</span>
                                 </div>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://apexlogistics.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Live System</a>
-                                    <a href="https://github.com/haiderali/apex-freight-engine" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://advitumhealthcare.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -518,26 +645,18 @@
                         <div class="project-meta-container">
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Apex Transports (Ahmedabad, India)</span>
+                                <span class="meta-value">Vadodara (Gujarat, India)</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Custom freight management tool enabling transport dispatchers to manage vehicle fleets, generate automated consignment invoices, and calculate multi-city route tariffs.</span>
+                                <span class="meta-value">Engineered an Android surveying app enabling field staff to log in using secure, admin-generated credentials and collect spatial data offline and online. Integrated Google Maps API and location services for accurate GPS tagging of dog sightings, dynamic field surveys, and real-time status updates. Implemented intuitive UI components and optimized media uploads to ensure smooth data entry during high-volume field operations. Connected the app seamlessly with a MERN backend to instantly sync recorded survey data, route details, and status logs with the admin panel.</span>
                             </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                </div>
-                            </div>
+                           
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
-                                    <a href="https://apexlogistics.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i> Live System</a>
-                                    <a href="https://github.com/haiderali/apex-freight-engine" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.yashrecords.app" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live on Playstore</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
                                 </div>
                             </div>
                         </div>
@@ -562,13 +681,10 @@
                     </div>
                     <div class="project-details">
                         <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Personal Project (Vadodara, India)</span>
-                            </div>
+                            
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Rental accommodation web application enabling seamless property listings, geographical search filters, user review engines, and secure session authentication.</span>
+                                <span class="meta-value">Designed and developed Track Flow, a comprehensive activity-tracking platform featuring an analytical user dashboard and centralized admin panel. Engineered real-time event logging and behavioral tracking engines to capture, aggregate, and visualize user activities across the web application. Built an admin control center with live data metrics, dynamic activity feeds, user action audit logs, and custom filtering controls. Implemented secure API endpoints and optimized database querying to process high-frequency activity logs without impacting frontend performance.</span>
                             </div>
                             <div class="meta-row">
                                 <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
@@ -576,6 +692,8 @@
                                     <span class="tech-tag">React</span>
                                     <span class="tech-tag">Node.js</span>
                                     <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Api's</span>
                                     <span class="tech-tag">MongoDB</span>
                                 </div>
                             </div>
@@ -583,7 +701,7 @@
                                 <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
                                 <div class="project-actions">
                                     <a href="https://stayfound.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
-                                    <a href="https://github.com/haiderali/stayfound-mern" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
+                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
                                 </div>
                             </div>
                         </div>
@@ -911,7 +1029,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo">Haider.dev</a>
+                  
+                    <a href="/" class="btn-enquiry">Haidar Ali</a>
                     <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
                 </div>
 
