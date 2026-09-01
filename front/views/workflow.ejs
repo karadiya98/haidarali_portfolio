@@ -80,40 +80,40 @@
         .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
         .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- Page Header Banner --- */
-        .page-header { text-align: center; padding: 60px 0 40px; }
-        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        /* --- Page Header Banner (Compact) --- */
+        .page-header { text-align: center; padding: 35px 0 20px; }
+        .slogan-tag { font-size: 0.8rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; display: block; }
         .gradient-text { background: var(--main-gradient); -webkit-text-fill-color: transparent; }
-        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
-        .page-header p { color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1rem; }
+        .page-header h1 { font-size: 2.1rem; margin-bottom: 8px; }
+        .page-header p { color: var(--text-muted); max-width: 550px; margin: 0 auto; font-size: 0.88rem; }
 
-        /* --- ZIGZAG WORKFLOW SECTION --- */
-        .workflow-section { position: relative; padding: 40px 0 90px; }
-        .zigzag-wrapper { position: relative; max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; }
+        /* --- ZIGZAG WORKFLOW SECTION (Compact & Smaller Boxes) --- */
+        .workflow-section { position: relative; padding: 25px 0 60px; }
+        .zigzag-wrapper { position: relative; max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; }
 
         /* Central Vertical Base Line */
         .zigzag-line-bg {
             position: absolute;
-            top: 25px;
-            bottom: 25px;
+            top: 18px;
+            bottom: 18px;
             left: 50%;
-            width: 4px;
+            width: 3px;
             background: rgba(255, 255, 255, 0.08);
             transform: translateX(-50%);
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         /* Dynamic Animated Fill Progress Line */
         .zigzag-line-fill {
             position: absolute;
-            top: 25px;
+            top: 18px;
             left: 50%;
-            width: 4px;
+            width: 3px;
             height: 0%;
             background: var(--main-gradient);
             transform: translateX(-50%);
-            border-radius: 4px;
-            box-shadow: 0 0 15px var(--neon-cyan);
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--neon-cyan);
             transition: height 0.15s linear;
         }
 
@@ -121,7 +121,7 @@
         .zigzag-item {
             position: relative;
             width: 50%;
-            margin-bottom: 70px;
+            margin-bottom: 35px;
             display: flex;
         }
 
@@ -129,22 +129,22 @@
         .zigzag-item.left {
             align-self: flex-start;
             justify-content: flex-end;
-            padding-right: 50px;
+            padding-right: 32px;
         }
 
         /* Right Side Cards */
         .zigzag-item.right {
             align-self: flex-end;
             justify-content: flex-start;
-            padding-left: 50px;
+            padding-left: 32px;
         }
 
-        /* Center Node Icon */
+        /* Center Node Icon (Smaller) */
         .zigzag-node {
             position: absolute;
-            top: 15px;
-            width: 52px;
-            height: 52px;
+            top: 10px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: var(--bg-deep);
             border: 2px solid var(--border-line);
@@ -152,18 +152,18 @@
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             z-index: 10;
             transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
         }
 
         .zigzag-item.left .zigzag-node {
-            right: -26px;
+            right: -19px;
         }
 
         .zigzag-item.right .zigzag-node {
-            left: -26px;
+            left: -19px;
         }
 
         /* Glowing Node State */
@@ -171,65 +171,65 @@
             border-color: var(--neon-cyan);
             color: #000;
             background: var(--main-gradient);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.7);
+            box-shadow: 0 0 18px rgba(6, 182, 212, 0.7);
         }
 
-        /* Step Card Styling */
+        /* Step Card Styling (Scaled Down) */
         .zigzag-card {
             width: 100%;
             background: var(--bg-surface);
             border: 1px solid var(--border-line);
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: 14px;
+            padding: 18px 20px;
             position: relative;
             backdrop-filter: blur(14px);
             transition: all 0.4s ease;
         }
 
         .zigzag-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(6, 182, 212, 0.5);
             background: var(--bg-card-hover);
         }
 
         .zigzag-item.active .zigzag-card {
             border-color: rgba(6, 182, 212, 0.4);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
         }
 
         /* Visual Connectors between Node & Card */
         .zigzag-card::before {
             content: '';
             position: absolute;
-            top: 30px;
-            width: 25px;
+            top: 20px;
+            width: 18px;
             height: 2px;
             background: var(--border-line);
             transition: 0.4s;
         }
 
-        .zigzag-item.left .zigzag-card::before { right: -25px; }
-        .zigzag-item.right .zigzag-card::before { left: -25px; }
+        .zigzag-item.left .zigzag-card::before { right: -18px; }
+        .zigzag-item.right .zigzag-card::before { left: -18px; }
 
         .zigzag-item.active .zigzag-card::before {
             background: var(--neon-cyan);
-            box-shadow: 0 0 8px var(--neon-cyan);
+            box-shadow: 0 0 6px var(--neon-cyan);
         }
 
-        /* Card Content Components */
-        .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-        .step-num { font-size: 2.2rem; font-weight: 700; color: var(--neon-green); line-height: 1; }
-        .step-badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color: var(--neon-cyan); font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+        /* Card Content Components (Smaller typography) */
+        .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .step-num { font-size: 1.4rem; font-weight: 700; color: var(--neon-green); line-height: 1; }
+        .step-badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color: var(--neon-cyan); font-size: 0.68rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .zigzag-card h3 { font-size: 1.35rem; margin-bottom: 12px; color: var(--text-white); }
-        .zigzag-card p { color: var(--text-muted); font-size: 0.94rem; line-height: 1.65; }
+        .zigzag-card h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text-white); font-weight: 600; }
+        .zigzag-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
 
         /* Feature Tags inside Card */
-        .feature-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-        .tag-pill { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--neon-green); padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; }
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .tag-pill { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--neon-green); padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; }
 
         /* --- Footer --- */
-        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 60px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
+        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
         .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
         .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
@@ -241,23 +241,37 @@
         .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
         .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
 
+        /* --- Mobile Bottom Navigation --- */
+        .mobile-bottom-nav {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            height: 65px; background: rgba(5, 8, 17, 0.92);
+            backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
+            z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
+        }
+        .mobile-nav-link {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; color: var(--text-muted);
+            text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
+        }
+        .mobile-nav-link i { font-size: 1.2rem; }
+        .mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
+
         /* --- Responsive Design (Mobile Timeline Adjustments) --- */
         @media (max-width: 992px) {
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-            .page-header h1 { font-size: 2.4rem; }
+            .page-header h1 { font-size: 1.9rem; }
         }
 
         @media (max-width: 768px) {
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-deep); padding: 20px; border-bottom: 1px solid var(--border-line); }
-            .nav-menu.active { display: flex; }
-            .dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; border: none; padding-left: 15px; }
-            .menu-toggle { display: block; }
-            .page-header h1 { font-size: 2rem; }
+            body { padding-bottom: 70px; }
+            .mobile-bottom-nav { display: flex; }
+            .nav-menu { display: none; }
+            .page-header h1 { font-size: 1.6rem; }
             
             /* Responsive Single-Column Zigzag for Mobile */
-            .zigzag-line-bg, .zigzag-line-fill { left: 24px; transform: none; }
-            .zigzag-item, .zigzag-item.left, .zigzag-item.right { width: 100%; align-self: flex-start; justify-content: flex-start; padding-left: 65px; padding-right: 0; }
-            .zigzag-node, .zigzag-item.left .zigzag-node, .zigzag-item.right .zigzag-node { left: 0; right: auto; width: 48px; height: 48px; }
+            .zigzag-line-bg, .zigzag-line-fill { left: 18px; transform: none; }
+            .zigzag-item, .zigzag-item.left, .zigzag-item.right { width: 100%; align-self: flex-start; justify-content: flex-start; padding-left: 48px; padding-right: 0; margin-bottom: 25px; }
+            .zigzag-node, .zigzag-item.left .zigzag-node, .zigzag-item.right .zigzag-node { left: 0; right: auto; width: 36px; height: 36px; font-size: 0.8rem; }
             .zigzag-card::before { display: none; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
@@ -265,161 +279,64 @@
 
         @media (max-width: 480px) {
             .container { padding: 0 16px; }
-            .page-header h1 { font-size: 1.7rem; }
-            .zigzag-card { padding: 22px; }
-            .step-num { font-size: 1.7rem; }
-        }:root {
-    --bg-deep: #050811;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-hover: rgba(51, 65, 85, 0.85);
-    --neon-green: #10b981;
-    --neon-cyan: #06b6d4;
-    --neon-purple: #a855f7;
-    --text-white: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-line: rgba(255, 255, 255, 0.08);
-    --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-.logo, .footer-title { font-family: 'Space Grotesk', sans-serif; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* --- Header / Top Navigation --- */
-header { 
-    position: sticky; 
-    top: 0; 
-    background: rgba(5, 8, 17, 0.85); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid var(--border-line); 
-    z-index: 1000; 
-    padding: 16px 0; 
-}
-.nav-box { display: flex; justify-content: space-between; align-items: center; }
-.logo { 
-    font-size: 1.6rem; 
-    font-weight: 700; 
-    text-decoration: none; 
-    background: var(--main-gradient); 
-    -webkit-text-fill-color: transparent; 
-}
-.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-item { position: relative; }
-.nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { color: #fff; }
-
-.dropdown { 
-    position: absolute; top: 120%; left: 0; 
-    background: var(--bg-card); backdrop-filter: blur(15px); 
-    border: 1px solid var(--border-line); border-radius: 12px; 
-    min-width: 200px; padding: 8px 0; opacity: 0; 
-    visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; 
-}
-.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-.dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
-
-.btn-enquiry { 
-    background: var(--main-gradient); color: #000; padding: 10px 24px; 
-    border-radius: 30px; font-weight: 700; text-decoration: none; 
-    font-size: 0.9rem; transition: 0.3s; border: none; 
-    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; 
-}
-.btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
-
-/* --- Mobile Bottom Navigation --- */
-.mobile-bottom-nav {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0;
-    height: 65px; background: rgba(5, 8, 17, 0.92);
-    backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
-    z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
-}
-.mobile-nav-link {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; color: var(--text-muted);
-    text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
-}
-.mobile-nav-link i { font-size: 1.2rem; }
-.mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
-
-/* --- Footer --- */
-footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-.footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-.footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-.back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
-
-/* --- Responsive Media Queries --- */
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-}
-@media (max-width: 768px) {
-    body { padding-bottom: 70px; }
-    .mobile-bottom-nav { display: flex; }
-    .nav-menu { display: none; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-}
+            .page-header h1 { font-size: 1.4rem; }
+            .zigzag-card { padding: 14px 16px; }
+            .step-num { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-    <div class="container nav-box">
-        <a href="/" class="btn-enquiry">Haidar Ali</a>
+        <div class="container nav-box">
+            <a href="/" class="btn-enquiry">Haidar Ali</a>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="/" class="nav-link ">About</a></li>
-            <li class="nav-item">
-                <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="services">What We Offer</a>
-                    <a href="services#why-choose-us">Why Choose Us</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="projects">Client Projects</a>
-                    <a href="projects">Personal Builds</a>
-                </div>
-            </li>
-            <li class="nav-item"><a href="workflow" class="nav-link active">Workflow</a></li>
-            <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
-        </ul>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link ">About</a></li>
+                <li class="nav-item">
+                    <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="services">What We Offer</a>
+                        <a href="services#why-choose-us">Why Choose Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="projects">Client Projects</a>
+                        <a href="projects">Personal Builds</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="workflow" class="nav-link active">Workflow</a></li>
+                <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
+            </ul>
 
-        <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
-    </div>
-</header>
+            <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+        </div>
+    </header>
 
-<nav class="mobile-bottom-nav">
-    <a href="/" class="mobile-nav-link ">
-        <i class="fa-solid fa-user"></i>
-        <span>About</span>
-    </a>
-    <a href="services" class="mobile-nav-link">
-        <i class="fa-solid fa-briefcase"></i>
-        <span>Services</span>
-    </a>
-    <a href="projects" class="mobile-nav-link">
-        <i class="fa-solid fa-code"></i>
-        <span>Projects</span>
-    </a>
-    <a href="workflow" class="mobile-nav-link active">
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>Workflow</span>
-    </a>
-    <a href="contact" class="mobile-nav-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-    </a>
-</nav>
+    <nav class="mobile-bottom-nav">
+        <a href="/" class="mobile-nav-link ">
+            <i class="fa-solid fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="services" class="mobile-nav-link">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Services</span>
+        </a>
+        <a href="projects" class="mobile-nav-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+        <a href="workflow" class="mobile-nav-link active">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Workflow</span>
+        </a>
+        <a href="contact" class="mobile-nav-link">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
 
     <main class="container">
         <section class="page-header">
@@ -430,11 +347,9 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
 
         <section class="workflow-section">
             <div class="zigzag-wrapper" id="zigzagWrapper">
-                <!-- Background Base Line & Scroll Progress Fill -->
                 <div class="zigzag-line-bg"></div>
                 <div class="zigzag-line-fill" id="zigzagProgress"></div>
 
-                <!-- Step 1 (Left) -->
                 <div class="zigzag-item left">
                     <div class="zigzag-node"><i class="fa-solid fa-comments"></i></div>
                     <div class="zigzag-card">
@@ -447,7 +362,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 2 (Right) -->
                 <div class="zigzag-item right">
                     <div class="zigzag-node"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                     <div class="zigzag-card">
@@ -460,7 +374,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 3 (Left) -->
                 <div class="zigzag-item left">
                     <div class="zigzag-node"><i class="fa-solid fa-lightbulb"></i></div>
                     <div class="zigzag-card">
@@ -473,7 +386,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 4 (Right) -->
                 <div class="zigzag-item right">
                     <div class="zigzag-node"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                     <div class="zigzag-card">
@@ -492,7 +404,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 5 (Left) -->
                 <div class="zigzag-item left">
                     <div class="zigzag-node"><i class="fa-solid fa-pen-nib"></i></div>
                     <div class="zigzag-card">
@@ -505,7 +416,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 6 (Right) -->
                 <div class="zigzag-item right">
                     <div class="zigzag-node"><i class="fa-solid fa-code"></i></div>
                     <div class="zigzag-card">
@@ -518,7 +428,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 7 (Left) -->
                 <div class="zigzag-item left">
                     <div class="zigzag-node"><i class="fa-solid fa-vial-circle-check"></i></div>
                     <div class="zigzag-card">
@@ -531,7 +440,6 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                     </div>
                 </div>
 
-                <!-- Step 8 (Right) -->
                 <div class="zigzag-item right">
                     <div class="zigzag-node"><i class="fa-solid fa-rocket"></i></div>
                     <div class="zigzag-card">
@@ -545,13 +453,14 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                 </div>
 
                 <div class="zigzag-item left">
-                    <div class="zigzag-node"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <div class="zigzag-node"><i class="fa-solid fa-circle-check"></i></div>
                     <div class="zigzag-card">
                         <div class="card-meta">
                             <span class="step-num">09</span>
                             <span class="step-badge">Phase 9</span>
                         </div>
                         <h3>Ready to use in real world</h3>
+                        <p>Your application is live, fully optimized, and ready for production users.</p>
                     </div>
                 </div>
 
@@ -563,7 +472,7 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="btn-enquiry">Haidar Ali</a>
+                    <a href="index.html" class="logo">Haider.dev</a>
                     <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
                 </div>
 
@@ -606,7 +515,9 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
         // Mobile Navigation Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+        }
 
         // Scroll-Driven Dynamic Zigzag Progress & Node Illumination
         const zigzagWrapper = document.getElementById('zigzagWrapper');
