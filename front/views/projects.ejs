@@ -3,1113 +3,1134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haider Ali portfolio</title>
+    <title>Haidar Ali - Full Stack & Android Engineer</title>
     
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
+        /* ==========================================================================
+           1. CORE VARIABLES & BASE RESET
+           ========================================================================== */
         :root {
-            --bg-deep: #050811;
-            --bg-surface: rgba(15, 23, 42, 0.65);
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --bg-card-hover: rgba(51, 65, 85, 0.85);
-            
-            --neon-green: #10b981;
-            --neon-cyan: #06b6d4;
-            --neon-purple: #a855f7;
-            
-            --text-white: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-line: rgba(255, 255, 255, 0.08);
-            
-            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+            --bg-dark: #08080a;
+            --bg-card: rgba(18, 18, 24, 0.7);
+            --bg-glass: rgba(12, 12, 15, 0.85);
+            --bg-glass-border: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.65);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, h4, .logo, .stat-num, .slogan-tag, .tab-btn, .project-title { font-family: 'Space Grotesk', sans-serif; }
-        
-        body { 
-            background-color: var(--bg-deep); 
-            color: var(--text-white); 
-            overflow-x: hidden; 
-            line-height: 1.5;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            background-attachment: fixed;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* --- Fixed Header Navigation --- */
-        header { 
-            position: sticky; 
-            top: 0; 
-            background: rgba(5, 8, 17, 0.85); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid var(--border-line); 
-            z-index: 1000; 
-            padding: 16px 0; 
-        }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; }
-        .logo { 
-            font-size: 1.6rem; 
-            font-weight: 700; 
-            text-decoration: none; 
-            background: var(--main-gradient); 
-            -webkit-text-fill-color: transparent; 
-        }
-
-        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-        .nav-item { position: relative; }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-        .nav-link:hover, .nav-link.active { color: #fff; }
-
-        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
-        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
-
-        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
-        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-
-        /* --- Page Header Banner --- */
-        .page-header { text-align: center; padding: 50px 0 15px; }
-        .slogan-tag { font-size: 0.85rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; display: block; }
-        .gradient-text { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
-        .page-header h1 { font-size: 2.3rem; margin-bottom: 8px; }
-        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 0.9rem; }
-
-        /* --- TAB NAVIGATION TOGGLE --- */
-        .tabs-wrapper { display: flex; justify-content: center; margin: 30px 0 40px; }
-        .tab-container { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 40px; padding: 5px; display: flex; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
-        .tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 10px 24px; font-size: 0.88rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
-        .tab-btn i { font-size: 0.85rem; }
-        .tab-btn.active { background: var(--main-gradient); color: #000; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-
-        /* --- TAB CONTENT SECTIONS --- */
-        .tab-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; min-height: 400px; }
-        .tab-content.active { display: block; opacity: 1; }
-
-        /* --- PROJECT ACCORDION LIST STYLES --- */
-        .projects-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px; }
-        .project-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border-line); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: border-color 0.3s ease, transform 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        .project-card:hover { border-color: rgba(6, 182, 212, 0.4); }
-
-        .project-header-bar { 
-            padding: 16px 22px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            cursor: pointer; 
-            user-select: none;
-            transition: background 0.3s;
-        }
-        .project-header-bar:hover { background: var(--bg-card-hover); }
-
-        .project-title-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .project-title { font-size: 1.05rem; font-weight: 600; color: var(--text-white); }
-        
-        .badge { 
-            font-size: 0.68rem; 
-            padding: 3px 10px; 
-            border-radius: 20px; 
-            font-weight: 600; 
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .badge-client { background: rgba(16, 185, 129, 0.15); color: var(--neon-green); border: 1px solid rgba(16, 185, 129, 0.3); }
-        .badge-personal { background: rgba(168, 85, 247, 0.15); color: var(--neon-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
-
-        .accordion-icon { 
-            width: 30px; 
-            height: 30px; 
-            border-radius: 50%; 
-            background: rgba(255, 255, 255, 0.05); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--neon-cyan);
-            font-size: 0.75rem;
-            transition: transform 0.3s ease;
-        }
-        .project-card.open .accordion-icon { transform: rotate(180deg); background: rgba(6, 182, 212, 0.2); }
-
-        /* Expandable Drawer Body */
-        .project-details { 
-            max-height: 0; 
-            overflow: hidden; 
-            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
-            background: rgba(15, 23, 42, 0.4);
-            border-top: 1px solid transparent;
-        }
-        .project-card.open .project-details { 
-            max-height: 800px; 
-            padding: 18px 22px; 
-            border-top-color: var(--border-line);
-            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), padding 0.3s ease;
-        }
-
-        /* Clean Text-Only Drawer Meta Grid */
-        .project-meta-container {
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 100px;
+            padding-bottom: 0;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            justify-content: space-between;
         }
 
-        .meta-row {
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Ambient Glow Tracker */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0.5;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* Main Page Content Wrapper */
+        main.main-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           2. NAVBAR SECTION
+           ========================================================================== */
+        .header-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 100px;
+            padding: 12px 28px;
             display: flex;
-            align-items: baseline;
-            gap: 10px;
-            font-size: 0.85rem;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .meta-label {
-            font-weight: 600;
-            color: var(--neon-cyan);
-            min-width: 120px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text-main, #fff);
+            transition: var(--transition-fast);
         }
 
-        .meta-value {
+        .brand-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .brand-logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+            background: #fff;
+            padding: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-muted);
-            line-height: 1.5;
+            transition: var(--transition-fast);
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
         }
 
-        .project-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .btn-glow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 35px var(--primary-glow), 0 0 15px var(--accent-glow);
+        }
+
+        .mobile-bottom-appbar {
+            display: none;
+        }
+
+        /* Mobile Bottom Nav */
+        @media (max-width: 767px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .header-nav {
+                top: 12px;
+                width: calc(100% - 24px);
+            }
+
+            .nav-glass-panel {
+                padding: 8px 16px;
+            }
+
+            .header-nav .nav-links {
+                display: none !important;
+            }
+
+            .mobile-bottom-appbar {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                z-index: 10000;
+                background: var(--bg-glass, rgba(12, 12, 15, 0.92));
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--bg-glass-border, rgba(255, 255, 255, 0.1));
+                box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+                padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+            }
+
+            .mobile-app-nav-links {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+            }
+
+            .mobile-app-link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+                color: var(--text-muted, rgba(255, 255, 255, 0.6));
+                text-decoration: none;
+                font-size: 0.65rem;
+                font-weight: 500;
+                flex: 1;
+                text-align: center;
+                transition: var(--transition-fast);
+            }
+
+            .mobile-app-link i {
+                font-size: 1.2rem;
+            }
+
+            .mobile-app-link:hover,
+            .mobile-app-link.active {
+                color: var(--accent);
+            }
+        }
+
+        /* ==========================================================================
+           3. PROJECTS SECTION STYLES (TEXT-ONLY LAYOUT)
+           ========================================================================== */
+        .projects-hero {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+
+        .projects-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted));
         
-        .tech-stack { display: flex; gap: 6px; flex-wrap: wrap; }
-        .tech-tag { font-size: 0.72rem; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-line); color: var(--text-white); padding: 3px 10px; border-radius: 6px; }
-
-        .project-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-        .btn-action { 
-            padding: 6px 14px; 
-            border-radius: 6px; 
-            font-size: 0.78rem; 
-            font-weight: 600; 
-            text-decoration: none; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 6px; 
-            transition: 0.3s; 
+            -webkit-text-fill-color: transparent;
         }
-        .btn-live { background: var(--neon-cyan); color: #000; }
-        .btn-live:hover { background: #22d3ee; box-shadow: 0 0 12px rgba(6, 182, 212, 0.4); }
-        .btn-github { background: rgba(255, 255, 255, 0.08); color: var(--text-white); border: 1px solid var(--border-line); }
-        .btn-github:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--text-white); }
 
-        /* --- FOOTER --- */
-        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 60px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+        .projects-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
-        @media (max-width: 992px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-            .page-header h1 { font-size: 2rem; }
+        /* Category Tabs */
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--bg-glass-border);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 28px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--primary-glow);
+        }
+
+        .card-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .project-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--bg-glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .project-badge {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-client {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-personal {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            margin-bottom: 24px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--bg-glass-border);
+        }
+
+        .btn-card {
+            flex: 1;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition-fast);
+        }
+
+        .btn-card-outline {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid var(--bg-glass-border);
+        }
+
+        .btn-card-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-card-primary {
+            background: var(--primary);
+            color: #fff;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-card-primary:hover {
+            box-shadow: 0 0 15px var(--primary-glow);
+            opacity: 0.95;
         }
 
         @media (max-width: 768px) {
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-deep); padding: 20px; border-bottom: 1px solid var(--border-line); }
-            .nav-menu.active { display: flex; }
-            .dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; border: none; padding-left: 15px; }
-            .menu-toggle { display: block; }
-            .page-header h1 { font-size: 1.8rem; }
-            .tab-btn { padding: 8px 16px; font-size: 0.82rem; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .project-header-bar { padding: 14px 16px; }
-            .meta-row { flex-direction: column; gap: 2px; }
-            .meta-label { min-width: auto; }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 0 16px; }
-            .tab-container { width: 100%; justify-content: center; }
-            .tab-btn { padding: 8px 10px; font-size: 0.75rem; gap: 4px; }
-            .page-header h1 { font-size: 1.5rem; }
-            .project-card.open .project-details { padding: 14px 16px; }
+        /* Detailed Modal Styles */
+        .modal-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 20px;
         }
-       
-:root {
-    --bg-deep: #050811;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-hover: rgba(51, 65, 85, 0.85);
-    --neon-green: #10b981;
-    --neon-cyan: #06b6d4;
-    --neon-purple: #a855f7;
-    --text-white: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-line: rgba(255, 255, 255, 0.08);
-    --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-}
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-.logo, .footer-title { font-family: 'Space Grotesk', sans-serif; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .modal-features {
+            list-style: none;
+            margin: 10px 0 20px;
+        }
 
-/* --- Header / Top Navigation --- */
-header { 
-    position: sticky; 
-    top: 0; 
-    background: rgba(5, 8, 17, 0.85); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid var(--border-line); 
-    z-index: 1000; 
-    padding: 16px 0; 
-}
-.nav-box { display: flex; justify-content: space-between; align-items: center; }
-.logo { 
-    font-size: 1.6rem; 
-    font-weight: 700; 
-    text-decoration: none; 
-    background: var(--main-gradient); 
-    -webkit-text-fill-color: transparent; 
-}
-.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-item { position: relative; }
-.nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { color: #fff; }
+        .modal-features li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.dropdown { 
-    position: absolute; top: 120%; left: 0; 
-    background: var(--bg-card); backdrop-filter: blur(15px); 
-    border: 1px solid var(--border-line); border-radius: 12px; 
-    min-width: 200px; padding: 8px 0; opacity: 0; 
-    visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; 
-}
-.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-.dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+        .modal-features li i {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
 
-.btn-enquiry { 
-    background: var(--main-gradient); color: #000; padding: 10px 24px; 
-    border-radius: 30px; font-weight: 700; text-decoration: none; 
-    font-size: 0.9rem; transition: 0.3s; border: none; 
-    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; 
-}
-.btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+        /* ==========================================================================
+           4. FOOTER SECTION
+           ========================================================================== */
+        footer {
+            background: var(--bg-glass);
+            border-top: 1px solid var(--bg-glass-border);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 50px 0 25px;
+            margin-top: auto;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 10;
+        }
 
-/* --- Mobile Bottom Navigation --- */
-.mobile-bottom-nav {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0;
-    height: 65px; background: rgba(5, 8, 17, 0.92);
-    backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
-    z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
-}
-.mobile-nav-link {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; color: var(--text-muted);
-    text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
-}
-.mobile-nav-link i { font-size: 1.2rem; }
-.mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
 
-/* --- Footer --- */
-footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-.footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-.footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-.back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+        .footer-brand .brand-logo {
+            margin-bottom: 12px;
+        }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-}
-@media (max-width: 768px) {
-    body { padding-bottom: 70px; }
-    .mobile-bottom-nav { display: flex; }
-    .nav-menu { display: none; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-}
+        .footer-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .footer-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .footer-status-pill:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(6px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover i {
+            color: var(--accent);
+        }
+
+        .footer-social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 10px;
+            transition: var(--transition-fast);
+        }
+
+        .social-badge:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-badge i {
+            transition: var(--transition-fast);
+        }
+
+        .social-badge:hover i {
+            color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .action-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .btn-whatsapp-glow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25d366;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+            width: 100%;
+        }
+
+        .btn-whatsapp-glow:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            background: #28e16d;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--bg-glass-border);
+            margin: 25px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .back-to-top {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-glow);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Modal Overlay Engine */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: rgba(18, 18, 24, 0.95);
+            border: 1px solid var(--bg-glass-border);
+            padding: 32px;
+            border-radius: 20px;
+            max-width: 620px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--bg-glass-border);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
 
-    <header>
-    <div class="container nav-box">
-        <a href="/" class="btn-enquiry">Haidar Ali</a>
+    <!-- Ambient Glow Tracker -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="/" class="nav-link ">About</a></li>
-            <li class="nav-item">
-                <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="services">What We Offer</a>
-                    <a href="services#why-choose-us">Why Choose Us</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="projects" class="nav-link active">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="projects">Client Projects</a>
-                    <a href="projects">Personal Builds</a>
-                </div>
-            </li>
-            <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
-            <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
-        </ul>
+    <!-- 1. HEADER / NAVBAR SECTION -->
+    <header class="header-nav">
+        <div class="nav-glass-panel">
+            <a href="/" class="brand-logo">
+                <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                <span style="margin-left: -10px;">aidar Ali</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">About</a>
+                <a href="/services" class="nav-link">Services</a>
+                <a href="/projects" class="nav-link active">Client's Work</a>
+                <a href="/workflow" class="nav-link">Workflow</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
 
-        <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
-    </div>
-</header>
-
-<nav class="mobile-bottom-nav">
-    <a href="/" class="mobile-nav-link ">
-        <i class="fa-solid fa-user"></i>
-        <span>About</span>
-    </a>
-    <a href="services" class="mobile-nav-link">
-        <i class="fa-solid fa-briefcase"></i>
-        <span>Services</span>
-    </a>
-    <a href="projects" class="mobile-nav-link active">
-        <i class="fa-solid fa-code"></i>
-        <span>Projects</span>
-    </a>
-    <a href="workflow" class="mobile-nav-link">
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>Workflow</span>
-    </a>
-    <a href="contact" class="mobile-nav-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-    </a>
-</nav>
-
-
-    <main class="container">
-        <!-- Page Header Banner -->
-        <section class="page-header">
-            <span class="slogan-tag">Featured Works & Systems</span>
-            <h1>Engineered Solutions</h1>
-            <p>Explore production-grade client platforms and technical side builds with live demos and repository access.</p>
-        </section>
-
-        <!-- Tab Navigation Toggle -->
-        <div class="tabs-wrapper">
-            <div class="tab-container">
-                <button class="tab-btn active" id="clientTabBtn">
-                    <i class="fa-solid fa-briefcase"></i> Client Projects ( 5 + )
-                </button>
-                <button class="tab-btn" id="personalTabBtn">
-                    <i class="fa-solid fa-code"></i> Personal Builds ( 8 + )
-                </button>
+            <div class="nav-actions">
+                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                    <i class="fa-brands fa-whatsapp"></i> Instant Hire
+                </a>
             </div>
         </div>
+    </header>
 
-        <!-- TAB 1: CLIENT PROJECTS CONTENT (4 ITEMS) -->
-        <section class="tab-content active" id="clientProjectsContent">
-            <div class="projects-list">
+    <!-- MOBILE APP BOTTOM BAR -->
+    <div class="mobile-bottom-appbar">
+        <nav class="mobile-app-nav-links">
+            <a href="/" class="mobile-app-link">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="/services" class="mobile-app-link">
+                <i class="fa-solid fa-code"></i>
+                <span>Services</span>
+            </a>
+            <a href="/projects" class="mobile-app-link active">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Client's Work</span>
+            </a>
+            <a href="/workflow" class="mobile-app-link">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Workflow</span>
+            </a>
+            <a href="/contact" class="mobile-app-link">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Hero Header -->
+            <section class="projects-hero">
+                <h1 >Featured Works & Systems</h1>
+                <p class="projects-subtitle">A curation of production-ready client applications, scalable web ecosystems, and native mobile software built for impact.</p>
+                <!-- Category Tabs -->
+                <div class="project-tabs">
+                    <button class="tab-btn active" data-filter="all">All Projects</button>
+                    <button class="tab-btn" data-filter="client">Client Work</button>
+                    <button class="tab-btn" data-filter="personal">Personal Projects</button>
+                </div>
+            </section>
+
+            <!-- Projects Grid Container -->
+            <div class="projects-grid" id="projectsGrid">
                 
-                <!-- Client Project Item 1 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Tasneem Mukhwas</h3>
-                            <span class="badge badge-client">B2C Platform</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="client" onclick="openProjectModal(0)">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <span class="project-badge badge-client">Kanai</span>
                     </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Chappi (Gujarat, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Developed a full-stack e-commerce web application with dynamic product selection, smooth cart management, and integrated secure online payments. Designed a comprehensive admin panel featuring real-time analytics for daily and monthly sales performance, revenue metrics, and user page views. Implemented complete order tracking and backend status updates to streamline business operations and user management. Optimized system architecture and responsive UI to deliver a seamless shopping experience across all device types.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">MongoDB Atlas</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                    <span class="tech-tag">API's</span>
-                                    <span class="tech-tag">Razor Pay Api</span>
-                                    <span class="tech-tag">Render deploying</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://tasneemmukhwas.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
-                                </div>
-                            </div>
-                        </div>
+                    <h3 class="project-title">AdVitum Healthcare</h3>
+                    <p class="project-desc">B2B wholesale medical inventory platform providing seamless order processing, dynamic catalog search, and real-time backend updates for pharmaceutical distributors.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Api</span>
+                        <span class="tech-tag">EJS</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="https://advitumhealthcare.com" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
                     </div>
                 </div>
 
-                <!-- Client Project Item 2 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Yash Domestic</h3>
-                            <span class="badge badge-client">Social Platform</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="client" onclick="openProjectModal(1)">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <span class="project-badge badge-client">Client Work</span>
                     </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Palanpur (Gujarat, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Developed a full-stack Web application for a veterinary NGO to showcase public initiatives, track rescue journeys, and collect community reviews. Built a comprehensive admin panel featuring real-time analytics for daily donations, multi-branch tracking, and organizational workflow management. Designed an end-to-end recruitment module with dynamic job application forms to streamline volunteer and staff onboarding. Engineered a responsive visual showcase detailing animal rescue stories and donor contributions to enhance public transparency.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">MongoDB Atlas</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                    <span class="tech-tag">API's</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://yashdomestic.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> Repository</a>
-                                </div>
-                            </div>
-                        </div>
+                    <h3 class="project-title">Yash Domestic Survey App</h3>
+                    <p class="project-desc">Native Android survey & mapping application integrated with Google Maps API and a custom MERN admin panel for real-time geospatial animal tracking.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android SDK</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Google Maps</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        <button class="btn-card btn-card-primary" onclick="openProjectModal(1)"><i class="fa-solid fa-circle-info"></i> Details</button>
                     </div>
                 </div>
 
-                <!-- Client Project Item 3 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Raahbar UV Printing's</h3>
-                            <span class="badge badge-client">B2B && B2C Platform</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="personal" onclick="openProjectModal(2)">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                        <span class="project-badge badge-personal">Personal Project</span>
                     </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Kanai (Gujarat,India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Developed a full-stack e-commerce web application with dynamic product selection, smooth cart management, and integrated secure online payments. Designed a comprehensive admin panel featuring real-time analytics for daily and monthly sales performance, revenue metrics, and user page views. Implemented complete order tracking and backend status updates to streamline business operations and user management. Optimized system architecture and responsive UI to deliver a seamless shopping experience across all device types.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">MongoDB Atlas</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                    <span class="tech-tag">API's</span>
-                                    <span class="tech-tag">Razor Pay Api</span>
-                                    <span class="tech-tag">Render deploying</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://raahbar.onrender.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
-                                </div>
-                            </div>
-                        </div>
+                    <h3 class="project-title">StayFound Rental Engine</h3>
+                    <p class="project-desc">Full-featured Airbnb clone offering interactive booking flows, user authentications, reviews, geo-location mapping, and property management dashboard.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Mapbox</span>
                     </div>
-                </div>
-
-                <!-- Client Project Item 4 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Yash Records Admin DashBoard</h3>
-                            <span class="badge badge-client">shows Realtime surveying data</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Vadodara (Gujarat, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Engineered a high-performance geospatial mobile app and MERN admin panel to streamline real-time animal population tracking and field data collection. Integrated interactive Google Maps APIs and custom forms for field surveyors to log location data, dog sightings, and dynamic status updates. Built a centralized admin dashboard featuring live geographic visualization, branch-wise data filters, and daily field reporting metrics. Implemented secure REST APIs and spatial data analytics to enable seamless backend monitoring and automated field operations.</span>
-                            </div>
-                            
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://www.yashrecords.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Client Project Item 4 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Advitum HealthCare</h3>
-                            <span class="badge badge-client">B2B wholeseller / import & export </span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Kanai (Gujarat, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Engineered a high-impact B2B healthcare catalog platform designed for seamless product discovery and bulk order inquiries. Built an intuitive product showcase featuring detailed medical specifications, category filtering, and direct contact modules for client leads. Integrated an administrative backend to manage high-volume inventory listings, track incoming customer inquiries, and monitor user engagement. Designed a clean, fully responsive user interface optimized for healthcare providers, wholesalers, and fast commercial communication.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">express</span>
-                                    <span class="tech-tag">nodej.s</span>
-                                    <span class="tech-tag">mongodb atlas</span>
-                                    <span class="tech-tag">ejs</span>
-                                     <span class="tech-tag">middleware</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://advitumhealthcare.com/" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live view</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Client Project Item 4 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Yash Records Application</h3>
-                            <span class="badge badge-client">helps to add real surveying data by staff's</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Vadodara (Gujarat, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Engineered an Android surveying app enabling field staff to log in using secure, admin-generated credentials and collect spatial data offline and online. Integrated Google Maps API and location services for accurate GPS tagging of dog sightings, dynamic field surveys, and real-time status updates. Implemented intuitive UI components and optimized media uploads to ensure smooth data entry during high-volume field operations. Connected the app seamlessly with a MERN backend to instantly sync recorded survey data, route details, and status logs with the admin panel.</span>
-                            </div>
-                           
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://play.google.com/store/apps/details?id=com.yashrecords.app" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-globe"></i>Live on Playstore</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i>Repository</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="#" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
                     </div>
                 </div>
 
             </div>
-        </section>
 
-        <!-- TAB 2: PERSONAL BUILDS CONTENT (4 ITEMS) -->
-        <section class="tab-content" id="personalBuildsContent">
-            <div class="projects-list">
-                
-                <!-- Personal Project Item 1 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">TrackFlow Real world Platform</h3>
-                            <span class="badge badge-personal">Full Stack MERN</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Designed and developed Track Flow, a comprehensive activity-tracking platform featuring an analytical user dashboard and centralized admin panel. Engineered real-time event logging and behavioral tracking engines to capture, aggregate, and visualize user activities across the web application. Built an admin control center with live data metrics, dynamic activity feeds, user action audit logs, and custom filtering controls. Implemented secure API endpoints and optimized database querying to process high-frequency activity logs without impacting frontend performance.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">Api's</span>
-                                    <span class="tech-tag">MongoDB</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://stayfound.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
-                                    <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Project Item 2 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">HRMS </h3>
-                            <span class="badge badge-personal">ML & Django</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Hackathon Build (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Machine Learning powered HR analytics dashboard that evaluates key employee metrics to predict turnover rates and offer actionable retention insights.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">Scikit-Learn</span>
-                                    <span class="tech-tag">Chart.js</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://resignguard.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/resign-guard-ml" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Project Item 3 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">StayForward</h3>
-                            <span class="badge badge-personal">AI & Data Analytics</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Academic Project (Parul University, Vadodara)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Predictive analytics engine recommending suitable crop planting based on soil nitrogen/phosphorus ratios, humidity levels, historical rain data, and temperature inputs.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">Flask</span>
-                                    <span class="tech-tag">Pandas</span>
-                                    <span class="tech-tag">Scikit-Learn</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://agriyield.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Tool</a>
-                                    <a href="https://github.com/haiderali/agri-crop-recommendation" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Project Item 4 -->
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Resign Guard</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Chat's Up</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">create Api's (express+mongodb) / used in application</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            
-
-            <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Agro Farm</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Amazon Clone</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header-bar" onclick="toggleAccordion(this)">
-                        <div class="project-title-group">
-                            <h3 class="project-title">Portfolio</h3>
-                            <span class="badge badge-personal">WebSockets & Node</span>
-                        </div>
-                        <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                    </div>
-                    <div class="project-details">
-                        <div class="project-meta-container">
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Client / Location:</span>
-                                <span class="meta-value">Side Project (Vadodara, India)</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-align-left"></i> Description:</span>
-                                <span class="meta-value">Real-time collaborative developer messaging application supporting instant code syntax highlighting, room creation, dynamic messaging channels, and WebSocket connections.</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-code"></i> Languages / Tech:</span>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">Socket.io</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express</span>
-                                </div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-label"><i class="fa-solid fa-link"></i> Quick Links:</span>
-                                <div class="project-actions">
-                                    <a href="https://codepulse.example.com" target="_blank" class="btn-action btn-live"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-                                    <a href="https://github.com/haiderali/codepulse-sockets" target="_blank" class="btn-action btn-github"><i class="fa-brands fa-github"></i> GitHub Code</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            
-
-            </div>
-
-            
-        </section>
+        </div>
     </main>
 
+    <!-- 3. FOOTER SECTION -->
     <footer>
         <div class="container">
             <div class="footer-grid">
+                
+                <!-- Brand & Bio -->
                 <div class="footer-brand">
-                  
-                    <a href="/" class="btn-enquiry">Haidar Ali</a>
-                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                    <a href="/" class="brand-logo">
+                        <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                        <span style="margin-left: -10px;">aidar Ali</span>
+                    </a>
+                    <p class="footer-bio">
+                        Full-Stack Web & Native Android Engineer delivering high-performance code and production systems.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-dot"></span>
+                        <span>Available for New Projects</span>
+                    </div>
                 </div>
 
-                <div>
+                <!-- Navigation Links -->
+                <div class="footer-col">
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="/#about"><i class="fa-solid fa-angle-right"></i> About Me</a></li>
+                        <li><a href="/#skills"><i class="fa-solid fa-angle-right"></i> Skills</a></li>
+                        <li><a href="/#certificates"><i class="fa-solid fa-angle-right"></i> Certificates</a></li>
+                        <li><a href="/projects"><i class="fa-solid fa-angle-right"></i> Client Deliverables</a></li>
+                        <li><a href="/contact"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Profiles</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
-                    </ul>
+                <!-- Connect Socials -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social-grid">
+                        <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="social-badge" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank" class="social-badge" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://leetcode.com/u/haiderali7860/" target="_blank" class="social-badge" title="LeetCode">
+                            <i class="fa-solid fa-code"></i>
+                            <span>LeetCode</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Direct Enquiry</h4>
-                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
-                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                <!-- Action Card -->
+                <div class="footer-col footer-action-card">
+                    <h4 class="footer-title">Let's Build Together</h4>
+                    <p class="action-desc">Have a project or custom requirements in mind?</p>
+                    <a href="https://wa.me/8780929056" target="_blank" class="btn-whatsapp-glow">
+                        <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
                     </a>
                 </div>
+
             </div>
 
+            <!-- Divider Line -->
+            <div class="footer-divider"></div>
+
+            <!-- Footer Bottom Bar -->
             <div class="footer-bottom">
-                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
-                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+                <p>&copy; 2026 Haidar Ali. All rights reserved.</p>
+                <a href="#" class="back-to-top" title="Back to top">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- Universal Project Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-container">
+            <button class="modal-close" id="projectModalClose"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalDynamicContent">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+        // Cursor Glow Follower
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
 
-        // Tab Switching Logic
-        const clientTabBtn = document.getElementById('clientTabBtn');
-        const personalTabBtn = document.getElementById('personalTabBtn');
-        const clientProjectsContent = document.getElementById('clientProjectsContent');
-        const personalBuildsContent = document.getElementById('personalBuildsContent');
-
-        function switchTab(showClient) {
-            if (showClient) {
-                clientTabBtn.classList.add('active');
-                clientProjectsContent.classList.add('active');
-                personalTabBtn.classList.remove('active');
-                personalBuildsContent.classList.remove('active');
-            } else {
-                personalTabBtn.classList.add('active');
-                personalBuildsContent.classList.add('active');
-                clientTabBtn.classList.remove('active');
-                clientProjectsContent.classList.remove('active');
+        // Detailed Projects Dataset (Text-Focused)
+        const projectsData = [
+            {
+                title: "AdVitum Healthcare",
+                category: "Client Work",
+                desc: "A full-scale B2B wholesale platform for medical distribution, enabling seamless inventory browsing, real-time pricing calculation, and bulk order placements for pharmacy networks.",
+                tech: ["Node.js", "Express", "MongoDB", "EJS", "Tailwind CSS"],
+                features: [
+                    "High-speed product search across large medical inventory catalog",
+                    "Customized pricing levels for authenticated clients",
+                    "Session management and secure admin control portal",
+                    "Fully responsive custom layout with Glassmorphism aesthetic"
+                ],
+                github: "https://github.com/karadiya98",
+                live: "https://advitum.com"
+            },
+            {
+                title: "Yash Domestic Survey App",
+                category: "Client Work",
+                desc: "Custom Android application engineered for field surveyors to track, geo-tag, and record street animal sightings with offline storage synchronization to a web admin system.",
+                tech: ["Java", "Android SDK", "Firebase", "REST APIs", "Google Maps API"],
+                features: [
+                    "GPS auto-location tagging for precise sighting mapping",
+                    "Camera module integration with cloud asset storage",
+                    "RESTful communication layer connecting field agents with MERN backend",
+                    "Interactive GIS tracking dashboard for municipal analysis"
+                ],
+                github: "https://github.com/karadiya98",
+                live: ""
+            },
+            {
+                title: "StayFound Rental Marketplace",
+                category: "Personal Project",
+                desc: "Full-stack rental marketplace matching travelers with property owners, featuring interactive Mapbox views, user reviews, dynamic pricing, and instant booking processing.",
+                tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Mapbox SDK"],
+                features: [
+                    "OAuth & JWT based secure user authentication",
+                    "Map-based property discovery powered by Mapbox",
+                    "Rating & Review system with media uploads",
+                    "RESTful API design with scalable document collections"
+                ],
+                github: "https://github.com/karadiya98",
+                live: "https://stayfound.example.com"
             }
+        ];
+
+        // Filtering Tab Mechanism
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Open Logic
+        const projectModal = document.getElementById('projectModal');
+        const modalDynamicContent = document.getElementById('modalDynamicContent');
+
+        function openProjectModal(index) {
+            const data = projectsData[index];
+            if (!data) return;
+
+            const featuresList = data.features.map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('');
+            const techBadges = data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+            const liveBtn = data.live ? `<a href="${data.live}" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>` : '';
+
+            modalDynamicContent.innerHTML = `
+                <span class="project-badge ${data.category === 'Client Work' ? 'badge-client' : 'badge-personal'}" style="display:inline-block; margin-bottom:12px;">${data.category}</span>
+                <h2 style="font-size: 1.6rem; color:#fff; margin-bottom: 12px;">${data.title}</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">${data.desc}</p>
+                
+                <h4 style="font-size: 0.95rem; color: #fff; margin-bottom: 8px;">Technologies Used:</h4>
+                <div class="modal-tech-stack">${techBadges}</div>
+                
+                <h4 style="font-size: 0.95rem; color: #fff; margin-bottom: 8px;">Key Deliverables & Features:</h4>
+                <ul class="modal-features">${featuresList}</ul>
+
+                <div class="project-actions" style="margin-top:24px;">
+                    <a href="${data.github}" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> GitHub Repository</a>
+                    ${liveBtn}
+                </div>
+            `;
+
+            projectModal.classList.add('active');
         }
 
-        clientTabBtn.addEventListener('click', () => switchTab(true));
-        personalTabBtn.addEventListener('click', () => switchTab(false));
-
-        // Accordion Dropdown Logic for Project Cards
-        function toggleAccordion(headerElement) {
-            const card = headerElement.parentElement;
-            card.classList.toggle('open');
+        // Modal Close Logic
+        const projectModalClose = document.getElementById('projectModalClose');
+        if (projectModalClose) {
+            projectModalClose.addEventListener('click', () => {
+                projectModal.classList.remove('active');
+            });
         }
 
-        // URL Hash Deep-linking Handler
-        window.addEventListener('load', () => {
-            if (window.location.hash === '#personal-builds') {
-                switchTab(false);
-            } else if (window.location.hash === '#client-projects') {
-                switchTab(true);
+        window.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
             }
         });
     </script>

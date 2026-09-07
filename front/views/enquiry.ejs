@@ -3,133 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haider Ali portfolio</title>
-
+    <title>Request Proposal & Instant Hire - Haidar Ali</title>
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ==========================================================================
+           1. CORE VARIABLES & RESET
+           ========================================================================== */
         :root {
-            --bg-deep: #050811;
-            --bg-surface: rgba(15, 23, 42, 0.65);
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --bg-card-hover: rgba(51, 65, 85, 0.85);
-
-            --neon-green: #10b981;
+            --bg-dark: #08080a;
+            --bg-card: rgba(18, 18, 24, 0.75);
+            --bg-glass: rgba(12, 12, 15, 0.85);
+            --bg-glass-border: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
             --neon-cyan: #06b6d4;
-            --neon-purple: #a855f7;
-
-            --text-white: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-line: rgba(255, 255, 255, 0.08);
-
-            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.65);
+            --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, h4, .logo, .slogan-tag, .form-title { font-family: 'Space Grotesk', sans-serif; }
-
-        body { 
-            background-color: var(--bg-deep); 
-            color: var(--text-white); 
-            overflow-x: hidden; 
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            background-attachment: fixed;
-            padding-bottom: 0px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* --- Desktop Header Navigation --- */
-        header { 
-            position: sticky; 
-            top: 0; 
-            background: rgba(5, 8, 17, 0.85); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid var(--border-line); 
-            z-index: 1000; 
-            padding: 16px 0; 
-        }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; }
-        .logo { 
-            font-size: 1.6rem; 
-            font-weight: 700; 
-            text-decoration: none; 
-            background: var(--main-gradient); 
-            
-            -webkit-text-fill-color: transparent; 
-        }
-
-        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-        .nav-item { position: relative; }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-        .nav-link:hover, .nav-link.active { color: #fff; }
-
-        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
-        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
-
-        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
-        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
-
-        /* --- Mobile Bottom Navigation --- */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 65px;
-            background: rgba(5, 8, 17, 0.92);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border-line);
-            z-index: 2000;
-            justify-content: space-around;
-            align-items: center;
-            padding: 0 10px;
-        }
-
-        .mobile-nav-link {
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 110px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Ambient Glow Tracker */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0.45;
+        }
+
+        /* Main Page Content Wrapper */
+        main.container {
+            flex: 1;
+            width: 100%;
+            padding-bottom: 90px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==========================================================================
+           2. NAVBAR SECTION
+           ========================================================================== */
+        .header-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 100px;
+            padding: 12px 28px;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
             text-decoration: none;
-            font-size: 0.72rem;
-            gap: 4px;
-            transition: 0.3s;
-            width: 20%;
+            color: var(--text-main);
+            transition: var(--transition-fast);
         }
 
-        .mobile-nav-link i { font-size: 1.2rem; }
-        .mobile-nav-link.active, .mobile-nav-link:hover {
-            color: var(--neon-cyan);
+        .brand-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
-        /* --- Page Header Banner --- */
-        .page-header { text-align: center; padding: 50px 0 30px; }
-        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
-        .gradient-text { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
-        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
-        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+        .brand-logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+            background: #fff;
+            padding: 4px;
+        }
 
-        /* --- Enquiry Section Layout --- */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .btn-glow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 35px var(--primary-glow), 0 0 15px var(--accent-glow);
+        }
+
+        .mobile-bottom-appbar {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .header-nav {
+                top: 12px;
+                width: calc(100% - 24px);
+            }
+
+            .nav-glass-panel {
+                padding: 8px 16px;
+            }
+
+            .header-nav .nav-links {
+                display: none !important;
+            }
+
+            .mobile-bottom-appbar {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                z-index: 10000;
+                background: var(--bg-glass);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--bg-glass-border);
+                box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+                padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+            }
+
+            .mobile-app-nav-links {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+            }
+
+            .mobile-app-link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+                color: var(--text-muted);
+                text-decoration: none;
+                font-size: 0.65rem;
+                font-weight: 500;
+                flex: 1;
+                text-align: center;
+                transition: var(--transition-fast);
+            }
+
+            .mobile-app-link i {
+                font-size: 1.2rem;
+            }
+
+            .mobile-app-link:hover,
+            .mobile-app-link.active {
+                color: var(--accent);
+            }
+        }
+
+        /* ==========================================================================
+           3. ENQUIRY / PROPOSAL PAGE HEADER & LAYOUT
+           ========================================================================== */
+        .page-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 10px auto 60px;
+        }
+
+        .slogan-tag {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 100px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a5b4fc, var(--primary), var(--accent));
+  
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Layout Grid */
         .enquiry-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 40px;
-            margin: 20px 0 70px;
+            align-items: start;
         }
 
+        /* Benefits Card Box */
         .benefits-card-box {
             display: flex;
             flex-direction: column;
@@ -137,67 +327,92 @@
         }
 
         .benefit-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-line);
+            background: var(--bg-card);
+            border: 1px solid var(--bg-glass-border);
             border-radius: 18px;
             padding: 24px;
-            backdrop-filter: blur(14px);
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            transition: 0.3s;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .benefit-card:hover {
-            border-color: var(--neon-purple);
-            transform: translateY(-3px);
-            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .benefit-icon {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             border-radius: 14px;
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            color: var(--neon-purple);
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            color: var(--primary);
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
             flex-shrink: 0;
+        }
+
+        .benefit-card:nth-child(2) .benefit-icon {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.25);
+            color: var(--accent);
+        }
+
+        .benefit-card:nth-child(3) .benefit-icon {
+            background: rgba(6, 182, 212, 0.12);
+            border-color: rgba(6, 182, 212, 0.25);
+            color: var(--neon-cyan);
         }
 
         .benefit-details h4 {
             font-size: 1.1rem;
-            color: var(--text-white);
-            margin-bottom: 4px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
         .benefit-details p {
-            color: var(--text-muted);
             font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
-        /* --- Form Glass Container --- */
+        /* Right Form Styling */
         .form-container {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-line);
+            background: var(--bg-card);
+            border: 1px solid var(--bg-glass-border);
             border-radius: 20px;
-            padding: 35px;
+            padding: 36px;
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .form-title {
             font-size: 1.5rem;
-            margin-bottom: 8px;
-            color: var(--text-white);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
         .form-subtitle {
+            font-size: 0.92rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .form-group {
@@ -208,231 +423,335 @@
             display: block;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--text-white);
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 8px;
         }
 
-        .form-input, .form-textarea, .form-select {
+        .form-input, .form-select, .form-textarea {
             width: 100%;
-            background: rgba(5, 8, 17, 0.7);
-            border: 1px solid var(--border-line);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 10px;
             padding: 12px 16px;
-            color: var(--text-white);
-            font-size: 0.95rem;
+            color: #ffffff;
+            font-size: 0.92rem;
             outline: none;
-            transition: 0.3s;
+            transition: var(--transition-fast);
         }
 
         .form-select option {
-            background: #050811;
-            color: #fff;
+            background-color: #121218;
+            color: #ffffff;
         }
 
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
-        }
-
-        .form-grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .form-textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
         }
 
-        /* --- Footer --- */
-        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+        .btn-enquiry {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000000;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 20px var(--primary-glow);
+            font-size: 0.95rem;
+        }
 
-        /* --- Responsive Queries --- */
+        .btn-enquiry:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 0 30px var(--primary-glow), 0 0 15px var(--accent-glow);
+        }
+
         @media (max-width: 992px) {
-            .enquiry-wrapper { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-            .page-header h1 { font-size: 2.3rem; }
+            .enquiry-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
         }
 
-        @media (max-width: 768px) {
-            body { padding-bottom: 70px; }
-            .desktop-nav { display: none; }
-            .mobile-bottom-nav { display: flex; }
-            .page-header { padding: 30px 0 20px; }
-            .page-header h1 { font-size: 1.9rem; }
-            .form-grid-2 { grid-template-columns: 1fr; }
-            .form-container { padding: 24px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
+        @media (max-width: 576px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 24px;
+            }
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 0 16px; }
-            .page-header h1 { font-size: 1.6rem; }
-        }:root {
-    --bg-deep: #050811;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-hover: rgba(51, 65, 85, 0.85);
-    --neon-green: #10b981;
-    --neon-cyan: #06b6d4;
-    --neon-purple: #a855f7;
-    --text-white: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-line: rgba(255, 255, 255, 0.08);
-    --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-}
+        /* ==========================================================================
+           4. FOOTER SECTION
+           ========================================================================== */
+        footer {
+            background: var(--bg-glass);
+            border-top: 1px solid var(--bg-glass-border);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 50px 0 25px;
+            margin-top: auto;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 10;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-.logo, .footer-title { font-family: 'Space Grotesk', sans-serif; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
 
-/* --- Header / Top Navigation --- */
-header { 
-    position: sticky; 
-    top: 0; 
-    background: rgba(5, 8, 17, 0.85); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid var(--border-line); 
-    z-index: 1000; 
-    padding: 16px 0; 
-}
-.nav-box { display: flex; justify-content: space-between; align-items: center; }
-.logo { 
-    font-size: 1.6rem; 
-    font-weight: 700; 
-    text-decoration: none; 
-    background: var(--main-gradient); 
-    -webkit-text-fill-color: transparent; 
-}
-.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-item { position: relative; }
-.nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { color: #fff; }
+        .footer-brand .brand-logo {
+            margin-bottom: 12px;
+        }
 
-.dropdown { 
-    position: absolute; top: 120%; left: 0; 
-    background: var(--bg-card); backdrop-filter: blur(15px); 
-    border: 1px solid var(--border-line); border-radius: 12px; 
-    min-width: 200px; padding: 8px 0; opacity: 0; 
-    visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; 
-}
-.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-.dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
+        .footer-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
 
-.btn-enquiry { 
-    background: var(--main-gradient); color: #000; padding: 10px 24px; 
-    border-radius: 30px; font-weight: 700; text-decoration: none; 
-    font-size: 0.9rem; transition: 0.3s; border: none; 
-    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; 
-}
-.btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+        .footer-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
 
-/* --- Mobile Bottom Navigation --- */
-.mobile-bottom-nav {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0;
-    height: 65px; background: rgba(5, 8, 17, 0.92);
-    backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
-    z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
-}
-.mobile-nav-link {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; color: var(--text-muted);
-    text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
-}
-.mobile-nav-link i { font-size: 1.2rem; }
-.mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
 
-/* --- Footer --- */
-footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-.footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-.footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-.back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-}
-@media (max-width: 768px) {
-    body { padding-bottom: 70px; }
-    .mobile-bottom-nav { display: flex; }
-    .nav-menu { display: none; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-}
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(6px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover i {
+            color: var(--accent);
+        }
+
+        .footer-social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 10px;
+            transition: var(--transition-fast);
+        }
+
+        .social-badge:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .social-badge:hover i {
+            color: var(--primary);
+        }
+
+        .btn-whatsapp-glow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25d366;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+            width: 100%;
+        }
+
+        .btn-whatsapp-glow:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            background: #28e16d;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--bg-glass-border);
+            margin: 25px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .back-to-top {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-    <div class="container nav-box">
-        <a href="/" class="btn-enquiry">Haidar Ali</a>
+    <!-- Ambient Glow Tracker -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="/" class="nav-link active">About</a></li>
-            <li class="nav-item">
-                <a href="services" class="nav-link">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="services">What We Offer</a>
-                    <a href="services#why-choose-us">Why Choose Us</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="projects">Client Projects</a>
-                    <a href="projects">Personal Builds</a>
-                </div>
-            </li>
-            <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
-            <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
-        </ul>
+    <!-- 1. HEADER / NAVBAR SECTION -->
+    <header class="header-nav">
+        <div class="nav-glass-panel">
+            <a href="/" class="brand-logo">
+                <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                <span style="margin-left: -10px;">aidar Ali</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">About</a>
+                <a href="/services" class="nav-link">Services</a>
+                <a href="/projects" class="nav-link">Client's Work</a>
+                <a href="/workflow" class="nav-link active">Workflow</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
 
-        <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+            <div class="nav-actions">
+                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                    <i class="fa-brands fa-whatsapp"></i> Instant Hire
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE APP BOTTOM BAR -->
+    <div class="mobile-bottom-appbar">
+        <nav class="mobile-app-nav-links">
+            <a href="/" class="mobile-app-link">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="/services" class="mobile-app-link">
+                <i class="fa-solid fa-code"></i>
+                <span>Services</span>
+            </a>
+            <a href="/projects" class="mobile-app-link">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Client's Work</span>
+            </a>
+            <a href="/workflow" class="mobile-app-link active">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Workflow</span>
+            </a>
+            <a href="/contact" class="mobile-app-link">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
     </div>
-</header>
 
-<nav class="mobile-bottom-nav">
-    <a href="/" class="mobile-nav-link ">
-        <i class="fa-solid fa-user"></i>
-        <span>About</span>
-    </a>
-    <a href="services" class="mobile-nav-link">
-        <i class="fa-solid fa-briefcase"></i>
-        <span>Services</span>
-    </a>
-    <a href="projects" class="mobile-nav-link">
-        <i class="fa-solid fa-code"></i>
-        <span>Projects</span>
-    </a>
-    <a href="workflow" class="mobile-nav-link">
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>Workflow</span>
-    </a>
-    <a href="contact" class="mobile-nav-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-    </a>
-</nav>
-
+    <!-- 2. MAIN PROPOSAL & ENQUIRY SECTION -->
     <main class="container">
         <section class="page-header">
             <span class="slogan-tag">Start Your Project</span>
@@ -500,7 +819,7 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
                             <label class="form-label">Estimated Budget Range</label>
                             <select class="form-select">
                                 <option value="" disabled selected>Select Budget</option>
-                                <option value="starter">Starter (< ₹25k / $300)</option>
+                                <option value="starter">Starter (&lt; ₹25k / $300)</option>
                                 <option value="growth">Growth (₹25k - ₹60k / $300 - $800)</option>
                                 <option value="enterprise">Custom Enterprise (₹60k+ / $800+)</option>
                             </select>
@@ -520,50 +839,78 @@ footer { background: #020408; border-top: 1px solid var(--border-line); padding:
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- 3. FOOTER SECTION -->
     <footer>
         <div class="container">
             <div class="footer-grid">
+                
                 <div class="footer-brand">
-                  
-                    <a href="/" class="btn-enquiry">Haidar Ali</a>
-                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                    <a href="/" class="brand-logo">
+                        <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                        <span style="margin-left: -10px;">aidar Ali</span>
+                    </a>
+                    <p class="footer-bio">
+                        Full-Stack Web & Native Android Engineer delivering high-performance code and production systems.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-dot"></span>
+                        <span>Available for New Projects</span>
+                    </div>
                 </div>
 
-                <div>
+                <div class="footer-col">
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/#about"><i class="fa-solid fa-angle-right"></i> About Me</a></li>
+                        <li><a href="/services"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                        <li><a href="/projects"><i class="fa-solid fa-angle-right"></i> Client Deliverables</a></li>
+                        <li><a href="/contact"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Profiles</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social-grid">
+                        <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="social-badge" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank" class="social-badge" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Direct Enquiry</h4>
-                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
-                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                <div class="footer-col footer-action-card">
+                    <h4 class="footer-title">Let's Build Together</h4>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px;">Have a project or custom requirements in mind?</p>
+                    <a href="https://wa.me/8780929056" target="_blank" class="btn-whatsapp-glow">
+                        <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
                     </a>
                 </div>
+
             </div>
 
+            <div class="footer-divider"></div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
-                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+                <p>&copy; 2026 Haidar Ali. All rights reserved.</p>
+                <a href="#" class="back-to-top" title="Back to top">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- JAVASCRIPT -->
+    <script>
+        // Cursor Glow Follower
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    </script>
 </body>
 </html>

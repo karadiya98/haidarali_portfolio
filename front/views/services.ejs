@@ -3,546 +3,1056 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haider Ali portfolio</title>
+    <title>Expert Technical Services - Haidar Ali</title>
     
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
+        /* ==========================================================================
+           1. CORE VARIABLES & BASE RESET
+           ========================================================================== */
         :root {
-            --bg-deep: #050811;
-            --bg-surface: rgba(15, 23, 42, 0.65);
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --bg-card-hover: rgba(51, 65, 85, 0.85);
-            
-            --neon-green: #10b981;
-            --neon-cyan: #06b6d4;
-            --neon-purple: #a855f7;
-            
-            --text-white: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-line: rgba(255, 255, 255, 0.08);
-            
-            --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-            --glow-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+            --bg-dark: #08080a;
+            --bg-card: rgba(18, 18, 24, 0.7);
+            --bg-glass: rgba(12, 12, 15, 0.85);
+            --bg-glass-border: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.65);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, h4, .logo, .stat-num, .slogan-tag, .tab-btn { font-family: 'Space Grotesk', sans-serif; }
-        
-        body { 
-            background-color: var(--bg-deep); 
-            color: var(--text-white); 
-            overflow-x: hidden; 
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            background-attachment: fixed;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* --- Fixed Header Navigation --- */
-        header { 
-            position: sticky; 
-            top: 0; 
-            background: rgba(5, 8, 17, 0.85); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid var(--border-line); 
-            z-index: 1000; 
-            padding: 16px 0; 
-        }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; }
-        .logo { 
-            font-size: 1.6rem; 
-            font-weight: 700; 
-            text-decoration: none; 
-            background: var(--main-gradient); 
-            -webkit-text-fill-color: transparent; 
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 100px;
+            padding-bottom: 0; /* REMOVED Extra Bottom Space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-        .nav-item { position: relative; }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-        .nav-link:hover, .nav-link.active { color: #fff; }
-
-        .dropdown { position: absolute; top: 120%; left: 0; background: var(--bg-card); backdrop-filter: blur(15px); border: 1px solid var(--border-line); border-radius: 12px; min-width: 200px; padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; }
-        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-        .dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
-
-        .btn-enquiry { background: var(--main-gradient); color: #000; padding: 10px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
-        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-
-        /* --- Page Header Banner --- */
-        .page-header { text-align: center; padding: 60px 0 30px; }
-        .slogan-tag { font-size: 0.95rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
-        .gradient-text { background: var(--main-gradient);  -webkit-text-fill-color: transparent; }
-        .page-header h1 { font-size: 2.8rem; margin-bottom: 12px; }
-        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem; }
-
-        /* --- TAB NAVIGATION TOGGLE --- */
-        .tabs-wrapper { display: flex; justify-content: center; margin: 40px 0 50px; }
-        .tab-container { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 40px; padding: 6px; display: flex; gap: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
-        .tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 12px 30px; font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
-        .tab-btn i { font-size: 0.9rem; }
-        
-        .tab-btn.active { background: var(--main-gradient); color: #000; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-
-        /* --- TAB CONTENT SECTIONS --- */
-        .tab-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
-        .tab-content.active { display: block; opacity: 1; }
-
-        /* Grid for "What We Offer" */
-        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 70px; }
-        .offer-card { background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 18px; padding: 28px; transition: 0.3s; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
-        .offer-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); background: var(--bg-card-hover); }
-        
-        /* Modernized Graphics within Offer Cards */
-        .card-graphic {
+        .container {
             width: 100%;
-            height: 80px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2);
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Ambient Glow Tracker */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0.5;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* ==========================================================================
+           2. PAGE HEADER & SWITCHING TABS
+           ========================================================================== */
+        .page-header {
+            text-align: center;
+            margin: 40px 0 32px 0;
+        }
+
+        .slogan-tag {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 em {
+            color: var(--primary);
+            font-style: normal;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .tab-container {
+            background: var(--bg-glass);
+            border: 1px solid var(--bg-glass-border);
+            padding: 6px;
+            border-radius: 100px;
+            display: flex;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================================
+           3. GRIDS & CARDS
+           ========================================================================== */
+        .offer-grid, .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .offer-card, .why-card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-line);
         }
-        .card-graphic i {
-            position: absolute;
-            font-size: 2rem;
-            top: 50%;
+
+        .offer-card:hover, .why-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-graphic {
+            width: 52px;
+            height: 52px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: var(--transition-bounce);
+        }
+
+        .offer-card:hover .card-graphic {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .why-number {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .offer-card h3, .why-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .offer-card p, .why-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .highlight-text { color: #ffffff; font-weight: 600; }
+        .highlight-secondary { color: var(--accent); font-weight: 600; }
+
+        /* ==========================================================================
+           4. NAVBAR SECTION
+           ========================================================================== */
+        .header-nav {
+            position: fixed;
+            top: 20px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--neon-green);
-            opacity: 0.8;
-            z-index: 2;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            z-index: 1000;
+            transition: var(--transition-smooth);
         }
-        .card-graphic::after {
+
+        .nav-glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 100px;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text-main, #fff);
+            transition: var(--transition-fast);
+        }
+
+        .brand-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .brand-logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+            background: #fff;
+            padding: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            background: var(--neon-cyan);
-            filter: blur(35px);
-            opacity: 0.2;
-            top: -20px; left: -20px;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
         }
-        .offer-card h3 { font-size: 1.25rem; margin-bottom: 10px; color: #fff; }
-        .offer-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-        /* --- WHY CHOOSE US LAYOUT --- */
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 70px; }
-        .why-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 18px; padding: 30px; transition: 0.3s; position: relative; }
-        .why-card:hover { border-color: var(--neon-purple); transform: translateY(-5px); }
-        
-        .why-number { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Active State on Navbar */
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .btn-glow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: #000;
-            margin-bottom: 16px; 
-            width: fit-content;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
         }
-        .why-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-white); }
-        .why-card p { color: var(--text-muted); font-size: 0.92rem; }
-        .highlight-text { color: var(--neon-green); font-weight: 600; }
-        .highlight-secondary { color: var(--neon-cyan); font-weight: 600; }
 
-        /* --- FOOTER --- */
-        footer { background: #020408; border-top: 1px solid var(--border-line); padding: 60px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-        .footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-        .footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-        .footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-        .back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
+        .btn-glow:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 35px var(--primary-glow), 0 0 15px var(--accent-glow);
+        }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
+        .mobile-bottom-appbar {
+            display: none;
+        }
+
+        /* Mobile Bottom Nav */
+        @media (max-width: 767px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .header-nav {
+                top: 12px;
+                width: calc(100% - 24px);
+            }
+
+            .nav-glass-panel {
+                padding: 8px 16px;
+            }
+
+            .header-nav .nav-links {
+                display: none !important;
+            }
+
+            .mobile-bottom-appbar {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                z-index: 10000;
+                background: var(--bg-glass, rgba(12, 12, 15, 0.92));
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--bg-glass-border, rgba(255, 255, 255, 0.1));
+                box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+                padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+            }
+
+            .mobile-app-nav-links {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+            }
+
+            .mobile-app-link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+                color: var(--text-muted, rgba(255, 255, 255, 0.6));
+                text-decoration: none;
+                font-size: 0.65rem;
+                font-weight: 500;
+                flex: 1;
+                text-align: center;
+                transition: var(--transition-fast);
+            }
+
+            .mobile-app-link i {
+                font-size: 1.2rem;
+            }
+
+            .mobile-app-link:hover,
+            .mobile-app-link.active {
+                color: var(--accent);
+            }
+        }
+
+        /* ==========================================================================
+           5. FIXED FOOTER SECTION
+           ========================================================================== */
+        footer {
+            background: var(--bg-glass);
+            border-top: 1px solid var(--bg-glass-border);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 50px 0 25px;
+            margin-top: auto; /* Fixed Extra Bottom Gap */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand .brand-logo {
+            margin-bottom: 12px;
+        }
+
+        .footer-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .footer-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .footer-status-pill:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(6px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover i {
+            color: var(--accent);
+        }
+
+        .footer-social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 10px;
+            transition: var(--transition-fast);
+        }
+
+        .social-badge:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-badge i {
+            transition: var(--transition-fast);
+        }
+
+        .social-badge:hover i {
+            color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .action-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .btn-whatsapp-glow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25d366;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+            width: 100%;
+        }
+
+        .btn-whatsapp-glow:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            background: #28e16d;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--bg-glass-border);
+            margin: 25px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .back-to-top {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-glow);
+            border-color: var(--primary);
+        }
+
+        /* Footer Responsive */
         @media (max-width: 992px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-            .page-header h1 { font-size: 2.4rem; }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
         }
 
-        @media (max-width: 768px) {
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-deep); padding: 20px; border-bottom: 1px solid var(--border-line); }
-            .nav-menu.active { display: flex; }
-            .dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; border: none; padding-left: 15px; }
-            .menu-toggle { display: block; }
-            .page-header h1 { font-size: 2rem; }
-            .tab-btn { padding: 10px 18px; font-size: 0.88rem; }
-            .why-grid, .offer-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 0 16px; }
-            .tab-container { width: 100%; justify-content: center; }
-            .tab-btn { padding: 10px 12px; font-size: 0.8rem; gap: 5px; }
-            .page-header h1 { font-size: 1.7rem; }
-            .why-card, .offer-card { padding: 20px; }
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000;
         }
 
-        
-:root {
-    --bg-deep: #050811;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-hover: rgba(51, 65, 85, 0.85);
-    --neon-green: #10b981;
-    --neon-cyan: #06b6d4;
-    --neon-purple: #a855f7;
-    --text-white: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-line: rgba(255, 255, 255, 0.08);
-    --main-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #a855f7 100%);
-}
+        .modal-overlay.active {
+            display: flex;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-.logo, .footer-title { font-family: 'Space Grotesk', sans-serif; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .modal-container {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
 
-/* --- Header / Top Navigation --- */
-header { 
-    position: sticky; 
-    top: 0; 
-    background: rgba(5, 8, 17, 0.85); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid var(--border-line); 
-    z-index: 1000; 
-    padding: 16px 0; 
-}
-.nav-box { display: flex; justify-content: space-between; align-items: center; }
-.logo { 
-    font-size: 1.6rem; 
-    font-weight: 700; 
-    text-decoration: none; 
-    background: var(--main-gradient); 
-    -webkit-text-fill-color: transparent; 
-}
-.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-item { position: relative; }
-.nav-link { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { color: #fff; }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
 
-.dropdown { 
-    position: absolute; top: 120%; left: 0; 
-    background: var(--bg-card); backdrop-filter: blur(15px); 
-    border: 1px solid var(--border-line); border-radius: 12px; 
-    min-width: 200px; padding: 8px 0; opacity: 0; 
-    visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; 
-}
-.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown a { display: block; padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-.dropdown a:hover { background: var(--bg-card-hover); color: var(--neon-cyan); }
-
-.btn-enquiry { 
-    background: var(--main-gradient); color: #000; padding: 10px 24px; 
-    border-radius: 30px; font-weight: 700; text-decoration: none; 
-    font-size: 0.9rem; transition: 0.3s; border: none; 
-    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; 
-}
-.btn-enquiry:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
-
-/* --- Mobile Bottom Navigation --- */
-.mobile-bottom-nav {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0;
-    height: 65px; background: rgba(5, 8, 17, 0.92);
-    backdrop-filter: blur(20px); border-top: 1px solid var(--border-line);
-    z-index: 2000; justify-content: space-around; align-items: center; padding: 0 10px;
-}
-.mobile-nav-link {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; color: var(--text-muted);
-    text-decoration: none; font-size: 0.72rem; gap: 4px; transition: 0.3s; width: 20%;
-}
-.mobile-nav-link i { font-size: 1.2rem; }
-.mobile-nav-link.active, .mobile-nav-link:hover { color: var(--neon-cyan); }
-
-/* --- Footer --- */
-footer { background: #020408; border-top: 1px solid var(--border-line); padding: 50px 0 25px; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 45px; }
-.footer-brand p { margin-top: 12px; font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
-.footer-title { color: var(--text-white); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--neon-green); padding-left: 4px; }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.back-to-top { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-line); color: var(--neon-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-.back-to-top:hover { background: var(--neon-cyan); color: #000; transform: translateY(-3px); }
-
-/* --- Responsive Media Queries --- */
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-}
-@media (max-width: 768px) {
-    body { padding-bottom: 70px; }
-    .mobile-bottom-nav { display: flex; }
-    .nav-menu { display: none; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-}
+        .modal-img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-    <div class="container nav-box">
-        <a href="/" class="btn-enquiry">Haidar Ali</a>
+    <!-- Ambient Glow Tracker -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="/" class="nav-link ">About</a></li>
-            <li class="nav-item">
-                <a href="services" class="nav-link active">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="services">What We Offer</a>
-                    <a href="services#why-choose-us">Why Choose Us</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="projects" class="nav-link">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem;"></i></a>
-                <div class="dropdown">
-                    <a href="projects">Client Projects</a>
-                    <a href="projects">Personal Builds</a>
-                </div>
-            </li>
-            <li class="nav-item"><a href="workflow" class="nav-link">Workflow</a></li>
-            <li class="nav-item"><a href="contact" class="nav-link">Contact Us</a></li>
-        </ul>
+    <!-- 1. NAVBAR SECTION -->
+    <header class="header-nav">
+        <div class="nav-glass-panel">
+            <a href="/" class="brand-logo">
+                <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                <span style="margin-left: -10px;">aidar Ali</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">About</a>
+                <!-- Active Link Set Here -->
+                <a href="/services" class="nav-link active">Services</a>
+                <a href="/projects" class="nav-link">Client's Work</a>
+                <a href="/workflow" class="nav-link">Workflow</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
 
-        <a href="enquiry" class="btn-enquiry"><i class="fa-solid fa-paper-plane"></i> Enquiry Now</a>
+            <div class="nav-actions">
+                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                    <i class="fa-brands fa-whatsapp"></i> Instant Hire
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE APP BOTTOM BAR -->
+    <div class="mobile-bottom-appbar">
+        <nav class="mobile-app-nav-links">
+            <a href="/" class="mobile-app-link">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="/services" class="mobile-app-link active">
+                <i class="fa-solid fa-code"></i>
+                <span>Services</span>
+            </a>
+            <a href="/projects" class="mobile-app-link">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Client's Work</span>
+            </a>
+            <a href="/workflow" class="mobile-app-link">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Workflow</span>
+            </a>
+            <a href="/contact" class="mobile-app-link">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
     </div>
-</header>
 
-<nav class="mobile-bottom-nav">
-    <a href="/" class="mobile-nav-link ">
-        <i class="fa-solid fa-user"></i>
-        <span>About</span>
-    </a>
-    <a href="services" class="mobile-nav-link active">
-        <i class="fa-solid fa-briefcase"></i>
-        <span>Services</span>
-    </a>
-    <a href="projects" class="mobile-nav-link">
-        <i class="fa-solid fa-code"></i>
-        <span>Projects</span>
-    </a>
-    <a href="workflow" class="mobile-nav-link">
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>Workflow</span>
-    </a>
-    <a href="contact" class="mobile-nav-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-    </a>
-</nav>
-
-    <div class="container">
+    <!-- MAIN CONTENT -->
+  <div class="container">
         
-        <section class="page-header">
-            <strong class="slogan-tag">Engineering Digital Scale</strong>
-            <h1>Expert Technical <em  style="font-style: normal;">Services</em></h1>
-            <p>Transforming complex business requirements into robust engineered systems with IT solution's.</p>
-        </section>
+    <section class="page-header">
+        <strong class="slogan-tag">Engineering Digital Scale</strong>
+        <h1>Expert Technical <em>Services</em></h1>
+        <p>Transforming complex business requirements into robust engineered systems with IT solutions.</p>
+    </section>
 
-        <div class="tabs-wrapper">
-            <div class="tab-container">
-                <button class="tab-btn active" id="offerTabBtn">
-                    <i class="fa-solid fa-cubes"></i> What We Offer
-                </button>
-                <button class="tab-btn" id="whyTabBtn">
-                    <i class="fa-solid fa-shield-halved"></i> Why Choose Us
-                </button>
-            </div>
+    <!-- Tabs -->
+    <div class="tabs-wrapper">
+        <div class="tab-container">
+            <button class="tab-btn active" id="offerTabBtn" onclick="switchTab('whatWeOfferContent', 'offerTabBtn')">
+                <i class="fa-solid fa-cubes"></i> What we Do 
+            </button>
+            <button class="tab-btn" id="whyTabBtn" onclick="switchTab('whyChooseUsContent', 'whyTabBtn')">
+                <i class="fa-solid fa-shield-halved"></i> Why Choose Us
+            </button>
         </div>
-
-        <div class="tab-content active" id="whatWeOfferContent">
-            <div class="offer-grid">
-                
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <h3>Application Development</h3>
-                    <p>Native & hybrid mobile applications built using Java & Firebase. Offline-enabled functionality, geolocation tracking, and real-time backend synchronization.</p>
-                </div>
-
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-                    <h3>Custom Websites</h3>
-                    <p>High-performance landing pages optimized for search engines, built with fully responsive layouts and modern design aesthetics.</p>
-                </div>
-
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <h3>Full-Stack Web Apps</h3>
-                    <p>Scalable web portals engineered with Node.js, Express, React, and MongoDB. Structured for high security and seamless dynamic management.</p>
-                </div>
-
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3>Admin Panels</h3>
-                    <p>Intuitive backend management dashboards allowing non-technical team members to securely update live inventory and database records.</p>
-                </div>
-
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3>Analytics Dashboards</h3>
-                    <p>Interactive data visualization interfaces displaying inventory metrics, operational analytics, and key business performance indicators.</p>
-                </div>
-
-                <div class="offer-card">
-                    <div class="card-graphic">
-                        <i class="fa-solid fa-pen-nib"></i>
-                    </div>
-                    <h3>UI/UX & Interactive Design</h3>
-                    <p>Human-centered user interface designs incorporating modern dark glassmorphism themes and fluid micro-interactions.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="tab-content" id="whyChooseUsContent">
-            <div class="why-grid">
-                
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">01</div>
-                    <h3>Engineering First Approach</h3>
-                    <p>We do not rely on fragile pre-made templates or bloatware. <span class="highlight-text">We engineer custom solutions from the ground up</span>—building modular code architectures, optimized APIs, and scalable databases tailored to your business goals.</p>
-                </div>
-
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">02</div>
-                    <h3>Cost-Optimized Infrastructure</h3>
-                    <p>Quality software does not require inflated costs. <span class="highlight-text">We focus on long-term cost efficiency</span> by optimizing cloud resources and backend server architectures to minimize operational overhead.</p>
-                </div>
-
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">03</div>
-                    <h3>Guaranteed Client Satisfaction</h3>
-                    <p>Your satisfaction is our primary benchmark. <span class="highlight-secondary">We maintain strict quality standards</span> and work iteratively through refinements until the platform completely meets your expectations.</p>
-                </div>
-
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">04</div>
-                    <h3>End-to-End Infrastructure Handling</h3>
-                    <p>Eliminate the hassle of managing multiple technical vendors. <span class="highlight-text">We handle domain setup, cloud hosting deployments, and custom business email setups</span> in a single turn-key package.</p>
-                </div>
-
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">05</div>
-                    <h3>Production-Ready Security & Speed</h3>
-                    <p>Deploy with complete confidence. <span class="highlight-secondary">Every platform undergoes rigorous security hardening</span>, query optimization, and performance tuning before going live.</p>
-                </div>
-
-                <div class="why-card">
-                    <div class="btn-enquiry why-number">06</div>
-                    <h3>User-Centric & Intuitive Systems</h3>
-                    <p>From complex B2B platforms to operational tools, <span class="highlight-secondary">we design simple, intuitive user interfaces</span> that non-technical teams can manage effortlessly from day one.</p>
-                </div>
-
-            </div>
-        </div>
-
     </div>
 
+    <!-- TAB 1: What We Offer -->
+    <div class="tab-content active" id="whatWeOfferContent">
+        <div class="offer-grid">
+            
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3>Full-Stack Web Development</h3>
+                <p>Scalable web applications engineered with modern stacks like MERN & Django. Structured for enterprise security, dynamic routing, and high performance.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <h3>Custom Admin Dashboards</h3>
+                <p>Intuitive backend management controls allowing non-technical teams to securely update live inventory, database records, and system workflows.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3>Android App Development</h3>
+                <p>Native mobile applications built with Java, Firebase, and REST APIs. Features offline caching, real-time sync, and location-based tracking.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3>AI & ML Model Integration</h3>
+                <p>Embedding predictive machine learning models and intelligent automation modules into web/mobile backends for real-time data analysis.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
+                <h3>Hotel & Management Software</h3>
+                <p>Custom booking management engines, room inventory trackers, reservation systems, and automated billing solutions for hospitality businesses.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <h3>B2B Wholesale Portals</h3>
+                <p>High-volume order management systems tailored for distributors and bulk suppliers, complete with custom catalog visibility and tier pricing.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <h3>SEO & Speed Optimization</h3>
+                <p>Search engine optimization, Core Web Vitals performance tuning, lazy loading, and asset minification to ensure top search rankings and fast load times.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3>Google Ads & Lead Growth</h3>
+                <p>Targeted PPC campaign management, conversion tracking analytics, and landing page funnels to maximize ROI and generate targeted leads.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3>UI/UX & Modern Web Design</h3>
+                <p>Human-centered user interface design incorporating responsive layouts, dark mode glassmorphism styles, and micro-interactions.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="card-graphic">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <h3>Deployment & Cloud Hosting</h3>
+                <p>End-to-end cloud setup on platforms like Render, AWS, or VPS. Includes custom domain configuration, SSL encryption, and automated CI/CD pipelines.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TAB 2: Why Choose Us -->
+    <div class="tab-content" id="whyChooseUsContent" style="display: none;">
+        <div class="why-grid">
+            
+            <div class="why-card">
+                <div class="why-number">01</div>
+                <h3>Engineering First Approach</h3>
+                <p>We do not rely on fragile pre-made templates or bloatware. <span class="highlight-text">We engineer custom solutions from the ground up</span>—building modular code architectures, optimized APIs, and scalable databases tailored to your business goals.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">02</div>
+                <h3>Cost-Optimized Infrastructure</h3>
+                <p>Quality software does not require inflated costs. <span class="highlight-text">We focus on long-term cost efficiency</span> by optimizing cloud resources and backend server architectures to minimize operational overhead.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">03</div>
+                <h3>Guaranteed Client Satisfaction</h3>
+                <p>Your satisfaction is our primary benchmark. <span class="highlight-secondary">We maintain strict quality standards</span> and work iteratively through refinements until the platform completely meets your expectations.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">04</div>
+                <h3>End-to-End Infrastructure Handling</h3>
+                <p>Eliminate the hassle of managing multiple technical vendors. <span class="highlight-text">We handle domain setup, cloud hosting deployments, and custom business email setups</span> in a single turn-key package.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">05</div>
+                <h3>Production-Ready Security & Speed</h3>
+                <p>Deploy with complete confidence. <span class="highlight-secondary">Every platform undergoes rigorous security hardening</span>, query optimization, and performance tuning before going live.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">06</div>
+                <h3>User-Centric & Intuitive Systems</h3>
+                <p>From complex B2B platforms to operational tools, <span class="highlight-secondary">we design simple, intuitive user interfaces</span> that non-technical teams can manage effortlessly from day one.</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- TAB SWITCHING SCRIPT -->
+<script>
+    function switchTab(contentId, btnId) {
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(el => {
+            el.classList.remove('active');
+            el.style.display = 'none';
+        });
+
+        // Remove active state from buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Activate selected tab content & button
+        const activeContent = document.getElementById(contentId);
+        activeContent.classList.add('active');
+        activeContent.style.display = 'block';
+
+        document.getElementById(btnId).classList.add('active');
+    }
+</script>
+
+    <!-- 2. FIXED FOOTER SECTION -->
     <footer>
         <div class="container">
             <div class="footer-grid">
+                
+                <!-- Brand & Bio -->
                 <div class="footer-brand">
-                    
-                    <a href="/" class="btn-enquiry">Haidar Ali</a>
-                    <p>CS Engineer & Full-Stack Developer dedicated to building performant applications and custom business solutions.</p>
+                    <a href="/" class="brand-logo">
+                        <img src="/images/logo2.png" style="background-color: var(--accent);" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                        <span style="margin-left: -10px;">aidar Ali</span>
+                    </a>
+                    <p class="footer-bio">
+                        Full-Stack Web & Native Android Engineer delivering high-performance code and production systems.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-dot"></span>
+                        <span>Available for New Projects</span>
+                    </div>
                 </div>
 
-                <div>
+                <!-- Navigation Links -->
+                <div class="footer-col">
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="index.html#projects">Projects</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="/#about"><i class="fa-solid fa-angle-right"></i> About Me</a></li>
+                        <li><a href="/#skills"><i class="fa-solid fa-angle-right"></i> Skills</a></li>
+                        <li><a href="/#certificates"><i class="fa-solid fa-angle-right"></i> Certificates</a></li>
+                        <li><a href="/projects"><i class="fa-solid fa-angle-right"></i> Client Deliverables</a></li>
+                        <li><a href="/contact"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Profiles</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
-                    </ul>
+                <!-- Connect Socials -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social-grid">
+                        <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="social-badge" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank" class="social-badge" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://leetcode.com/u/haiderali7860/" target="_blank" class="social-badge" title="LeetCode">
+                            <i class="fa-solid fa-code"></i>
+                            <span>LeetCode</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="footer-title">Direct Enquiry</h4>
-                    <p style="font-size: 0.85rem; margin-bottom: 12px;">Need engineered web systems?</p>
-                    <a href="https://wa.me/910000000000" target="_blank" class="btn-enquiry" style="padding: 8px 18px; font-size: 0.8rem;">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
+                <!-- Action Card -->
+                <div class="footer-col footer-action-card">
+                    <h4 class="footer-title">Let's Build Together</h4>
+                    <p class="action-desc">Have a project or custom requirements in mind?</p>
+                    <a href="https://wa.me/8780929056" target="_blank" class="btn-whatsapp-glow">
+                        <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
                     </a>
                 </div>
+
             </div>
 
+            <!-- Divider Line -->
+            <div class="footer-divider"></div>
+
+            <!-- Footer Bottom Bar -->
             <div class="footer-bottom">
-                <p>&copy; 2026 Haider Ali. All Rights Reserved.</p>
-                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+                <p>&copy; 2026 Haidar Ali. All rights reserved.</p>
+                <a href="#" class="back-to-top" title="Back to top">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+    <!-- Certification Modal Engine -->
+    <div class="modal-overlay" id="certModal">
+        <div class="modal-container">
+            <button class="modal-close" id="certModalClose"><i class="fa-solid fa-xmark"></i></button>
+            <img src="" alt="Certificate Preview" class="modal-img" id="certModalImg">
+            <h3 id="certModalTitle" style="font-size: 1.4rem; margin-bottom: 8px;"></h3>
+            <p id="certModalDesc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+        </div>
+    </div>
 
-        // Tab Switching Logic
+    <!-- JAVASCRIPT -->
+    <script>
+        // Tab Switcher
         const offerTabBtn = document.getElementById('offerTabBtn');
         const whyTabBtn = document.getElementById('whyTabBtn');
-        const whatWeOfferContent = document.getElementById('whatWeOfferContent');
-        const whyChooseUsContent = document.getElementById('whyChooseUsContent');
+        const offerContent = document.getElementById('whatWeOfferContent');
+        const whyContent = document.getElementById('whyChooseUsContent');
 
-        function switchTab(showOffer) {
-            if (showOffer) {
-                offerTabBtn.classList.add('active');
-                whatWeOfferContent.classList.add('active');
-                whyTabBtn.classList.remove('active');
-                whyChooseUsContent.classList.remove('active');
-            } else {
-                whyTabBtn.classList.add('active');
-                whyChooseUsContent.classList.add('active');
-                offerTabBtn.classList.remove('active');
-                whatWeOfferContent.classList.remove('active');
-            }
-        }
-
-        offerTabBtn.addEventListener('click', () => switchTab(true));
-        whyTabBtn.addEventListener('click', () => switchTab(false));
-
-        // URL Deep-linking handler
-        window.addEventListener('load', () => {
-            if (window.location.hash === '#why-choose-us') {
-                switchTab(false);
-            }
+        offerTabBtn.addEventListener('click', () => {
+            offerTabBtn.classList.add('active');
+            whyTabBtn.classList.remove('active');
+            offerContent.classList.add('active');
+            whyContent.classList.remove('active');
         });
+
+        whyTabBtn.addEventListener('click', () => {
+            whyTabBtn.classList.add('active');
+            offerTabBtn.classList.remove('active');
+            whyContent.classList.add('active');
+            offerContent.classList.remove('active');
+        });
+
+        // Cursor Glow Follower
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Modal Close Listener
+        const certModal = document.getElementById('certModal');
+        const certModalClose = document.getElementById('certModalClose');
+        if (certModalClose) {
+            certModalClose.addEventListener('click', () => {
+                certModal.classList.remove('active');
+            });
+        }
     </script>
 </body>
 </html>

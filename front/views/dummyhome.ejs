@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haidar Ali — Full-Stack & Android Systems Engineer</title>
+    
+    <meta name="description" content="Portfolio of Haidar Ali — Full-Stack MERN & Android Engineer crafting scalable web applications, real-time GPS tracking systems, and high-performance custom software solutions.">
+    <meta name="keywords" content="Haidar Ali, Full Stack Developer, MERN, Android, Java, Vadodara Developer, Node.js, React">
+    <meta name="author" content="Haidar Ali">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Pro 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CORE ENGINE & THEME CONSTANTS
+           ========================================================================== */
+        :root {
+            --bg-base: #030712;
+            --bg-surface: #0b0f19;
+            --bg-surface-elevated: #111827;
+            --bg-glass: rgba(17, 24, 39, 0.75);
+            --bg-glass-border: rgba(255, 255, 255, 0.08);
+            --bg-glass-hover: rgba(255, 255, 255, 0.12);
+            
+            --primary: #06b6d4;
+            --primary-glow: rgba(6, 182, 212, 0.35);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.35);
+            --amber: #f59e0b;
+            
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --text-subtle: #6b7280;
+            
+            --border-light: rgba(255, 255, 255, 0.06);
+            --border-focus: rgba(6, 182, 212, 0.5);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ==========================================================================
+           2. GLOBAL RESET & BASE STYLES
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            color-scheme: dark;
+            background-color: var(--bg-base);
+            font-family: var(--font-sans);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 60%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
+                var(--bg-base);
+            min-height: 100vh;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: left 0.1s ease-out, top 0.1s ease-out;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            width: 100%;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 64px auto;
+        }
+
+        .section-header .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
+            
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* ==========================================================================
+           3. NAVBAR SECTION
+           ========================================================================== */
+        .header-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: 100px;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 6px;
+            background: #fff;
+            padding: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover { color: var(--text-main); }
+
+        .btn-glow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 35px var(--primary-glow);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION (PROFILE PHOTO + ABOUT ME)
+           ========================================================================== */
+        .hero-section {
+            padding-top: 170px;
+            padding-bottom: 60px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            align-items: center;
+            gap: 56px;
+        }
+
+        .dev-photo-card {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            box-shadow: var(--shadow-subtle), 0 0 60px rgba(6, 182, 212, 0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .dev-photo-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-focus);
+        }
+
+        .photo-wrapper {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-surface-elevated);
+        }
+
+        .dev-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.6s ease;
+        }
+
+        .dev-photo-card:hover .dev-img {
+            transform: scale(1.04);
+        }
+
+        .photo-info-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 24px;
+            background: linear-gradient(180deg, transparent 0%, rgba(3, 7, 18, 0.95) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .photo-info-overlay h3 { font-size: 1.3rem; font-weight: 700; }
+        .photo-info-overlay p { font-size: 0.85rem; color: var(--primary); font-family: var(--font-mono); }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 4vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--purple) 100%);
+            
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-about-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 36px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            background: var(--bg-glass);
+            border: 1px solid var(--bg-glass-border);
+            color: var(--text-main);
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary-glass:hover {
+            background: var(--bg-glass-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           5. METRICS / NUMBERS STATS SECTION
+           ========================================================================== */
+        .stats-section {
+            padding: 40px 0 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px -10px var(--primary-glow);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .stat-card:hover::before { opacity: 1; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            background: linear-gradient(135deg, #fff, var(--text-muted));
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+a
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ==========================================================================
+           6. TECHNICAL SKILLS SECTION
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .skill-group-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: var(--transition-smooth);
+        }
+
+        .skill-group-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .skill-group-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .skill-group-title i {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .skills-badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition-fast);
+        }
+
+        .skill-badge:hover {
+            border-color: var(--primary);
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge i { font-size: 1rem; }
+
+        /* ==========================================================================
+           7. CERTIFICATES HORIZONTAL AUTO-SCROLL CAROUSEL
+           ========================================================================== */
+        .certificates-section {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 28px;
+            width: max-content;
+            animation: infiniteScroll 25s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .cert-card {
+            width: 320px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
+        }
+
+        .cert-img-wrapper {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-bottom: 14px;
+            background: var(--bg-base);
+        }
+
+        .cert-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cert-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cert-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ==========================================================================
+           8. CLIENT 4 WORKS (EXACT 4-COLUMN SINGLE ROW GRID)
+           ========================================================================== */
+        .projects-4col-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .project-micro-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+        .project-micro-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.8), 0 0 25px var(--primary-glow);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background: var(--bg-surface-elevated);
+        }
+
+        .project-micro-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-micro-card:hover .project-micro-img {
+            transform: scale(1.08);
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .live-badge i { font-size: 0.45rem; color: var(--accent); }
+
+        .card-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            transition: var(--transition-fast);
+        }
+
+        .project-micro-card:hover .card-body h4 { color: var(--primary); }
+
+        .card-body p {
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .card-tech-stack span {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-light);
+            color: var(--primary);
+        }
+
+        .card-footer-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-subtle);
+        }
+
+        .project-micro-card:hover .card-footer-link { color: var(--text-main); }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 52px;
+        }
+
+        .btn-view-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 100px;
+            background: var(--bg-glass);
+            border: 1px solid var(--bg-glass-border);
+            color: var(--text-main);
+            font-weight: 700;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-view-more:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           9. SOCIAL & PROFESSIONAL LINKS SECTION
+           ========================================================================== */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .social-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px var(--primary-glow);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            transition: transform 0.4s var(--transition-bounce);
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .social-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .social-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           10. CREATIVITY SECTION (INTERACTIVE COST ESTIMATOR + TERMINAL)
+           ========================================================================== */
+        .creativity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .creative-widget-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            position: relative;
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Interactive Terminal */
+        .terminal-box {
+            background: #020617;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #38bdf8;
+            height: 220px;
+            overflow-y: auto;
+        }
+
+        .terminal-line { margin-bottom: 8px; }
+        .terminal-prompt { color: var(--accent); margin-right: 8px; }
+
+        /* Project Cost Estimator Widget */
+        .estimator-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .estimator-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-surface-elevated);
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .estimator-option:hover { border-color: var(--primary); }
+
+        .estimator-option input[type="checkbox"] {
+            accent-color: var(--primary);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .estimator-price-tag {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .estimator-total-display {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           11. DIRECT ENQUIRY & CONTACT SECTION
+           ========================================================================== */
+        .enquiry-section {
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 70%), var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-xl);
+            padding: 80px 48px;
+            text-align: center;
+        }
+
+        .slogan-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .enquiry-section h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .enquiry-section p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-size: 1.05rem;
+        }
+
+        .btn-enquiry {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border-radius: 100px;
+            background: #25d366;
+            color: #000;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.3);
+            margin-bottom: 56px;
+        }
+
+        .btn-enquiry:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(37, 211, 102, 0.5);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--bg-glass-border);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            background: var(--bg-surface-elevated);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-card i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-subtle);
+            margin-bottom: 4px;
+        }
+
+        .contact-card a {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+
+        /* ==========================================================================
+           12. FOOTER SECTION
+           ========================================================================== */
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 0 40px 0;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 20px;
+            max-width: 320px;
+        }
+
+        .footer-logo-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: #fff !important;
+        }
+
+        .footer-logo-img { height: 32px; width: auto; }
+        .footer-title { font-size: 1rem; font-weight: 700; margin-bottom: 24px; }
+
+        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a { color: var(--text-muted); font-size: 0.9rem; transition: var(--transition-fast); }
+        .footer-links a:hover { color: var(--primary); padding-left: 4px; }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-subtle);
+            font-size: 0.85rem;
+        }
+
+        .back-to-top {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: var(--transition-bounce);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        /* ==========================================================================
+           13. CERTIFICATE MODAL SYSTEM
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(3, 7, 18, 0.88);
+            backdrop-filter: blur(16px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 650px;
+            padding: 32px;
+            position: relative;
+            transform: scale(0.9);
+            transition: var(--transition-bounce);
+        }
+
+        .modal-overlay.active .modal-container { transform: scale(1); }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.05);
+            border: none;
+            color: var(--text-muted);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            max-height: 380px;
+            object-fit: cover;
+        }
+
+        /* ==========================================================================
+           14. RESPONSIVE BREAKPOINTS (PRESERVING 4-COL ON DESKTOP)
+           ========================================================================== */
+        @media (max-width: 1200px) {
+            .projects-4col-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-about-text { margin-left: auto; margin-right: auto; }
+            .hero-cta-group { justify-content: center; }
+            .creativity-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .projects-4col-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .enquiry-section { padding: 48px 24px; }
+            section { padding: 70px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glow Tracker -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- 1. NAVBAR SECTION -->
+    <header class="header-nav">
+        <div class="nav-glass-panel">
+            <a href="#" class="brand-logo">
+                <img src="/images/logo.png" alt="Haidar Ali Logo" class="brand-logo-img" onerror="this.src='https://via.placeholder.com/120x40/10b981/000000?text=HAIDAR'">
+                <span style="margin-left: -10px;">aidar Ali</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#certificates" class="nav-link">Certificates</a>
+                <a href="#client-works" class="nav-link">Client Works</a>
+                <a href="#social-links" class="nav-link">Socials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                    <i class="fa-brands fa-whatsapp"></i> Instant Hire
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION: PROFILE PHOTO + ABOUT ME -->
+        <section id="about" class="container hero-section">
+            <div class="hero-grid">
+                <!-- Developer Photo Card -->
+                <div class="dev-photo-card">
+                    <div class="photo-wrapper">
+                        <img src="/images/profile.png" alt="Haidar Ali Full Stack Engineer" class="dev-img" onerror="this.src='https://via.placeholder.com/600x800/0f172a/06b6d4?text=Haidar+Ali+Developer'">
+                        <div class="photo-info-overlay">
+                            <div>
+                                <h3>Haidar Ali</h3>
+                                <p>Full-Stack & Mobile Specialist</p>
+                            </div>
+                            <span class="live-badge"><i class="fa-solid fa-circle"></i> Vadodara, IN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Me Content -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span> Available for New Freelance Projects
+                    </div>
+                    <h1 class="hero-title">
+                        Engineered for <span style="color: var(--accent);">Scalability</span> & Business Impact
+                    </h1>
+                    <p class="hero-about-text">
+                        I am Haidar Ali, a Computer Science Systems Engineer specializing in full-stack MERN Web architecture, Java Android native apps, and geospatial mapping platforms. I engineer high-performance web products, seamlessly connecting real-time databases with clean UI aesthetics.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#client-works" class="btn-glow">
+                            Explore Client Works <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="btn-secondary-glass">
+                            <i class="fa-brands fa-github"></i> GitHub Codebase
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. METRICS / NUMBERS STATS SECTION -->
+        <section class="container stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div >2+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Total Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Projects Handled</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.8%</div>
+                    <div class="stat-label">System Uptime</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TECHNICAL SKILLS SECTION -->
+        <section id="skills" class="container">
+            <div class="section-header">
+                <span class="tag"><i class="fa-solid fa-layer-group"></i> Technical Arsenal</span>
+                <h2>Skills & Tech Matrix</h2>
+                <p>Core tools and frameworks utilized to construct high-throughput production systems</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Group 1: Frontend -->
+                <div class="skill-group-card">
+                    <div class="skill-group-title">
+                        <i class="fa-solid fa-desktop"></i> Frontend Stack
+                    </div>
+                    <div class="skills-badge-list">
+                        <span class="skill-badge"><i class="fa-brands fa-react" style="color: #61dafb;"></i> React.js</span>
+                        <span class="skill-badge"><i class="fa-brands fa-html5" style="color: #e34f26;"></i> HTML5/CSS3</span>
+                        <span class="skill-badge"><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript ES6+</span>
+                        <span class="skill-badge"><i class="fa-brands fa-bootstrap" style="color: #7952b3;"></i> Tailwind / Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- Group 2: Backend & DB -->
+                <div class="skill-group-card">
+                    <div class="skill-group-title">
+                        <i class="fa-solid fa-server"></i> Backend & Database
+                    </div>
+                    <div class="skills-badge-list">
+                        <span class="skill-badge"><i class="fa-brands fa-node-js" style="color: #339933;"></i> Node.js</span>
+                        <span class="skill-badge"><i class="fa-solid fa-bolt" style="color: #06b6d4;"></i> Express.js</span>
+                        <span class="skill-badge"><i class="fa-solid fa-database" style="color: #47a248;"></i> MongoDB</span>
+                        <span class="skill-badge"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Django</span>
+                    </div>
+                </div>
+
+                <!-- Group 3: Android & Systems -->
+                <div class="skill-group-card">
+                    <div class="skill-group-title">
+                        <i class="fa-solid fa-mobile-screen-button"></i> Mobile & Tools
+                    </div>
+                    <div class="skills-badge-list">
+                        <span class="skill-badge"><i class="fa-brands fa-android" style="color: #3ddc84;"></i> Native Java Android</span>
+                        <span class="skill-badge"><i class="fa-solid fa-fire" style="color: #ffca28;"></i> Firebase Realtime</span>
+                        <span class="skill-badge"><i class="fa-solid fa-map-location-dot" style="color: #ea4335;"></i> Google Maps API</span>
+                        <span class="skill-badge"><i class="fa-brands fa-git-alt" style="color: #f05032;"></i> Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CERTIFICATES HORIZONTAL AUTOMATIC CAROUSEL -->
+        <section id="certificates" class="certificates-section">
+            <div class="container" style="margin-bottom: 32px;">
+                <div class="section-header" style="margin-bottom: 0;">
+                    <span class="tag"><i class="fa-solid fa-award"></i> Verified Skills</span>
+                    <h2>Certifications & Accomplishments</h2>
+                    <p>Auto-scrolling showcase of technical certifications and competitive milestones</p>
+                </div>
+            </div>
+
+            <!-- Infinite Auto Marquee Track -->
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- Cert 1 -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert1.png" alt="Full Stack Certification" onerror="this.src='https://via.placeholder.com/600x350/0f172a/06b6d4?text=MERN+Stack+Certification'">
+                        </div>
+                        <h4>Full-Stack Web Development</h4>
+                        <p>Specialization in MERN & Microservices</p>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert2.png" alt="Android Development" onerror="this.src='https://via.placeholder.com/600x350/0f172a/a855f7?text=Android+Java+Native'">
+                        </div>
+                        <h4>Android & Mobile Systems</h4>
+                        <p>Native Java & Firebase Realtime DB</p>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert3.png" alt="Geospatial Development" onerror="this.src='https://via.placeholder.com/600x350/0f172a/10b981?text=Google+Maps+API+Pro'">
+                        </div>
+                        <h4>Google Maps & GPS Tracking</h4>
+                        <p>Geospatial Location Analytics API</p>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert4.png" alt="DSA Certification" onerror="this.src='https://via.placeholder.com/600x350/0f172a/f59e0b?text=Problem+Solving+LeetCode'">
+                        </div>
+                        <h4>Data Structures & Algorithms</h4>
+                        <p>Algorithm Optimization & Logic</p>
+                    </div>
+
+                    <!-- Duplicate Loop Items -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert1.png" alt="Full Stack Certification" onerror="this.src='https://via.placeholder.com/600x350/0f172a/06b6d4?text=MERN+Stack+Certification'">
+                        </div>
+                        <h4>Full-Stack Web Development</h4>
+                        <p>Specialization in MERN & Microservices</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert2.png" alt="Android Development" onerror="this.src='https://via.placeholder.com/600x350/0f172a/a855f7?text=Android+Java+Native'">
+                        </div>
+                        <h4>Android & Mobile Systems</h4>
+                        <p>Native Java & Firebase Realtime DB</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert3.png" alt="Geospatial Development" onerror="this.src='https://via.placeholder.com/600x350/0f172a/10b981?text=Google+Maps+API+Pro'">
+                        </div>
+                        <h4>Google Maps & GPS Tracking</h4>
+                        <p>Geospatial Location Analytics API</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="/images/cert4.png" alt="DSA Certification" onerror="this.src='https://via.placeholder.com/600x350/0f172a/f59e0b?text=Problem+Solving+LeetCode'">
+                        </div>
+                        <h4>Data Structures & Algorithms</h4>
+                        <p>Algorithm Optimization & Logic</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CLIENT 4 WORKS (EXACT 4 CARDS IN 1 ROW GRID) -->
+        <section id="client-works" class="container">
+            <div class="section-header">
+                <span class="tag"><i class="fa-solid fa-laptop-code"></i> Production Portfolio</span>
+                <h2>Client Deliverables & Works</h2>
+                <p>Real-world production apps built and deployed for live client operations</p>
+            </div>
+
+            <div class="projects-4col-grid">
+                <!-- Project 1: Tasneem Mukhwas -->
+                <a href="https://tasneemmukhwas.com/" target="_blank" class="project-micro-card">
+                    <div class="card-img-wrapper">
+                        <span class="live-badge"><i class="fa-solid fa-circle"></i> Live Store</span>
+                        <img src="/images/tasneem.png" alt="Tasneem Mukhwas" class="project-micro-img" onerror="this.src='https://via.placeholder.com/600x337/0f172a/06b6d4?text=Tasneem+Mukhwas+Live'">
+                    </div>
+                    <div class="card-body">
+                        <h4>Tasneem Mukhwas</h4>
+                        <p>E-commerce portal, global client targeting, custom analytics dashboard & payment gateway.</p>
+                        <div class="card-tech-stack">
+                            <span>MERN</span>
+                            <span>Node Mailer</span>
+                            <span>Payment API</span>
+                        </div>
+                        <div class="card-footer-link">
+                            <span>Chappi</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: Yash Domestic -->
+                <a href="https://yashdomestic.com/" target="_blank" class="project-micro-card">
+                    <div class="card-img-wrapper">
+                        <span class="live-badge"><i class="fa-solid fa-circle"></i> Live Platform</span>
+                        <img src="/images/yash.png" alt="Yash Domestic" class="project-micro-img" onerror="this.src='https://via.placeholder.com/600x337/0f172a/a855f7?text=Yash+Domestic+Live'">
+                    </div>
+                    <div class="card-body">
+                        <h4>Yash Domestic</h4>
+                        <p>Enterprise service portal for promoting animal healthcare, tracking, and local welfare.</p>
+                        <div class="card-tech-stack">
+                            <span>React</span>
+                            <span>Express</span>
+                            <span>SEO Pro</span>
+                        </div>
+                        <div class="card-footer-link">
+                            <span>Palanpur</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: Raahbar UV Printings -->
+                <a href="https://raahbar.onrender.com/" target="_blank" class="project-micro-card">
+                    <div class="card-img-wrapper">
+                        <span class="live-badge"><i class="fa-solid fa-circle"></i> Live Website</span>
+                        <img src="/images/raahbar.png" alt="Raahbar UV Printing" class="project-micro-img" onerror="this.src='https://via.placeholder.com/600x337/0f172a/10b981?text=Raahbar+Printing+Live'">
+                    </div>
+                    <div class="card-body">
+                        <h4>Raahbar UV Printings</h4>
+                        <p>Custom UV printing ordering engine, dynamic price calculator, and inventory admin suite.</p>
+                        <div class="card-tech-stack">
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Render</span>
+                        </div>
+                        <div class="card-footer-link">
+                            <span>Kanai</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4: Geospatial Survey System -->
+                <a href="https://www.yashrecords.com/" target="_blank" class="project-micro-card">
+                    <div class="card-img-wrapper">
+                        <span class="live-badge"><i class="fa-solid fa-circle"></i> Live System</span>
+                        <img src="/images/records.png" alt="Geospatial Survey System" class="project-micro-img" onerror="this.src='https://via.placeholder.com/600x337/0f172a/38bdf8?text=Geospatial+Survey+Live'">
+                    </div>
+                    <div class="card-body">
+                        <h4>Geospatial Survey App</h4>
+                        <p>Real-time GPS tracking Android app paired with a web data visualization dashboard.</p>
+                        <div class="card-tech-stack">
+                            <span>Android (Java)</span>
+                            <span>Google Maps</span>
+                            <span>Firebase</span>
+                        </div>
+                        <div class="card-footer-link">
+                            <span>Vadodara</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="view-more-container">
+                <a href="#contact" class="btn-view-more">View All Projects & Architecture <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- 7. SOCIAL & PROFESSIONAL LINKS SECTION -->
+        <section id="social-links" class="container">
+            <div class="section-header">
+                <span class="tag"><i class="fa-solid fa-share-nodes"></i> Digital Presence</span>
+                <h2>Social & Developer Links</h2>
+                <p>Connect across repositories, professional networks, and algorithm performance stats</p>
+            </div>
+
+            <div class="social-grid">
+                <a href="https://github.com/karadiya98?tab=repositories" target="_blank" class="social-card">
+                    <i class="fa-brands fa-github social-icon" style="color: #ffffff;"></i>
+                    <h4>GitHub</h4>
+                    <p>Open Source Code & Repositories</p>
+                </a>
+
+                <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank" class="social-card">
+                    <i class="fa-brands fa-linkedin social-icon" style="color: #06b6d4;"></i>
+                    <h4>LinkedIn</h4>
+                    <p>Professional Experience & Network</p>
+                </a>
+
+                <a href="https://leetcode.com/u/haiderali7860/" target="_blank" class="social-card">
+                    <i class="fa-solid fa-code social-icon" style="color: #f59e0b;"></i>
+                    <h4>LeetCode</h4>
+                    <p>Problem Solving & DSA Scores</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 8. KUCH OR CREATIVITY (INTERACTIVE TERMINAL & PROJECT COST ESTIMATOR) -->
+        <section class="container">
+            <div class="section-header">
+                <span class="tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Interactive Sandbox</span>
+                <h2>Extra Creativity & Tools</h2>
+                <p>Live interactive widgets: Test my developer shell or estimate your custom project scope</p>
+            </div>
+
+            <div class="creativity-grid">
+                <!-- Widget 1: Live Interactive Developer Terminal -->
+                <div class="creative-widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-terminal" style="color: var(--primary);"></i> Haidar's System Shell
+                    </div>
+                    <div class="terminal-box" id="terminalBox">
+                        <div class="terminal-line"><span class="terminal-prompt">haidar@sys:~$</span> system.init()</div>
+                        <div class="terminal-line">Loading Full-Stack Modules... [OK]</div>
+                        <div class="terminal-line">Connecting MongoDB Atlas... [CONNECTED]</div>
+                        <div class="terminal-line">Initializing Android Location Engine... [READY]</div>
+                        <div class="terminal-line"><span class="terminal-prompt">haidar@sys:~$</span> status</div>
+                        <div class="terminal-line" style="color: var(--accent);">-> 100% Ready for New Freelance Contracts</div>
+                    </div>
+                </div>
+
+                <!-- Widget 2: Interactive Project Scope Estimator -->
+                <div class="creative-widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-calculator" style="color: var(--accent);"></i> Instant Scope Estimator
+                    </div>
+                    <div class="estimator-group">
+                        <label class="estimator-option">
+                            <span><input type="checkbox" class="est-check" value="15000" checked> Full-Stack Web App (MERN)</span>
+                            <span class="estimator-price-tag">₹15,000</span>
+                        </label>
+                        <label class="estimator-option">
+                            <span><input type="checkbox" class="est-check" value="10000"> Native Android App (Java)</span>
+                            <span class="estimator-price-tag">₹10,000</span>
+                        </label>
+                        <label class="estimator-option">
+                            <span><input type="checkbox" class="est-check" value="5000"> Admin Dashboard & APIs</span>
+                            <span class="estimator-price-tag">₹5,000</span>
+                        </label>
+                        <div class="estimator-total-display">
+                            <span>Estimated Total Scope:</span>
+                            <span id="estimatorTotal" style="color: var(--primary); font-family: var(--font-mono);">₹15,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. DIRECT ENQUIRY & CONTACT SECTION -->
+        <section id="contact" class="container">
+            <div class="enquiry-section">
+                <strong class="slogan-tag">Start Your Project Today</strong>
+                <h2>Have a Business Idea? Enquire Now!</h2>
+                <p>Contact directly via WhatsApp or Email for instant technical consultations and estimates.</p>
+                
+                <a href="https://wa.me/8780929056" target="_blank" class="btn-enquiry">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Direct on WhatsApp
+                </a>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>Email</p>
+                        <a href="mailto:karadiyahaiderali7@gmail.com">karadiyahaiderali7@gmail.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>Mobile</p>
+                        <a href="tel:8780929056">+91 8780929056</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Location</p>
+                        <a href="#">Vadodara, Gujarat, India</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 10. FOOTER SECTION -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo-badge">
+                        <img src="/images/logo.png" alt="Haidar Ali Logo" class="footer-logo-img" onerror="this.src='https://via.placeholder.com/180x60/10b981/000000?text=HAIDAR+ALI'">
+                    </a>
+                    <p>Full-Stack Web & Native Android Engineer delivering high-performance code and production systems for growing businesses.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#certificates">Certificates</a></li>
+                        <li><a href="#client-works">Client Deliverables</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Profiles</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/karadiya98?tab=repositories" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">LinkedIn Profile</a></li>
+                        <li><a href="https://leetcode.com/u/haiderali7860/" target="_blank">LeetCode Rank</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Direct Enquiry</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 12px; color: var(--text-muted);">Ready to build your next product?</p>
+                    <a href="https://wa.me/8780929056" target="_blank" class="btn-enquiry" style="padding: 10px 20px; font-size: 0.85rem; margin-bottom: 0;">
+                        <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haidar Ali. Crafted with Precision & Clean Architecture.</p>
+                <a href="#" class="back-to-top" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Certification Modal Engine -->
+    <div class="modal-overlay" id="certModal">
+        <div class="modal-container">
+            <button class="modal-close" id="certModalClose"><i class="fa-solid fa-xmark"></i></button>
+            <img src="" alt="Certificate Preview" class="modal-img" id="certModalImg">
+            <h3 id="certModalTitle" style="font-size: 1.4rem; margin-bottom: 8px;"></h3>
+            <p id="certModalDesc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+        </div>
+    </div>
+
+    <!-- Scripts Engine -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Cursor Glow Effect
+            const cursorGlow = document.getElementById("cursorGlow");
+            document.addEventListener("mousemove", (e) => {
+                cursorGlow.style.left = e.clientX + "px";
+                cursorGlow.style.top = e.clientY + "px";
+            });
+
+            // Interactive Project Estimator
+            const estChecks = document.querySelectorAll(".est-check");
+            const estimatorTotal = document.getElementById("estimatorTotal");
+
+            function updateTotal() {
+                let sum = 0;
+                estChecks.forEach(chk => {
+                    if (chk.checked) sum += parseInt(chk.value);
+                });
+                estimatorTotal.innerText = "₹" + sum.toLocaleString("en-IN");
+            }
+
+            estChecks.forEach(chk => chk.addEventListener("change", updateTotal));
+
+            // Dynamic Modal Logic for Certificates
+            const certCards = document.querySelectorAll(".cert-card");
+            const modal = document.getElementById("certModal");
+            const modalImg = document.getElementById("certModalImg");
+            const modalTitle = document.getElementById("certModalTitle");
+            const modalDesc = document.getElementById("certModalDesc");
+            const closeBtn = document.getElementById("certModalClose");
+
+            if (modal && closeBtn) {
+                certCards.forEach((card) => {
+                    card.addEventListener("click", () => {
+                        const img = card.querySelector("img");
+                        const title = card.querySelector("h4")?.innerText || "Certificate";
+                        const desc = card.querySelector("p")?.innerText || "";
+
+                        if (img) modalImg.src = img.src;
+                        modalTitle.innerText = title;
+                        modalDesc.innerText = desc;
+
+                        modal.classList.add("active");
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+
+                const closeModal = () => {
+                    modal.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                };
+
+                closeBtn.addEventListener("click", closeModal);
+                modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
