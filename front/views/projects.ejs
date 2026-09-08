@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haidar Ali - Full Stack & Android Engineer</title>
+    <title>Haidar Ali Portfolio</title>
+    <!-- Tab bar logo (Favicon) -->
+    <link rel="icon" type="image/png" href="images/logo2.png">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -807,7 +809,7 @@
             </nav>
 
             <div class="nav-actions">
-                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                <a href="/enquiry"  class="btn-glow">
                     <i class="fa-brands fa-whatsapp"></i> Instant Hire
                 </a>
             </div>
@@ -843,13 +845,11 @@
     <!-- 2. MAIN CONTENT AREA -->
     <main class="main-content">
         <div class="container">
-            
+             
             <!-- Hero Header -->
-            <section class="projects-hero">
-                <h1 >Featured Works & Systems</h1>
-                <p class="projects-subtitle">A curation of production-ready client applications, scalable web ecosystems, and native mobile software built for impact.</p>
-                <!-- Category Tabs -->
-                <div class="project-tabs">
+            <section class="projects-hero" style="position:sticky; top:50px; z-index: 1000;">
+               
+                <div class="project-tabs" >
                     <button class="tab-btn active" data-filter="all">All Projects</button>
                     <button class="tab-btn" data-filter="client">Client Work</button>
                     <button class="tab-btn" data-filter="personal">Personal Projects</button>
@@ -860,13 +860,90 @@
             <div class="projects-grid" id="projectsGrid">
                 
                 <!-- Project Card 1 -->
-                <div class="project-card" data-category="client" onclick="openProjectModal(0)">
+                <div class="project-card" data-category="client">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <span class="project-badge badge-client">Kanai</span>
+                    </div>
+                    <h3 class="project-title">Raahbar-E-Commerce & UV Printing Platform</h3>
+                    <p class="project-desc">Built a full-stack e-commerce app for custom UV printing on acrylic, glass, and wood.
+
+Implemented live custom design uploads, real-time pricing, and payment gateway integration.
+
+Created an admin panel to manage orders, inventory, and production workflows.
+
+Optimized for high-resolution graphics processing and seamless B2B/B2C checkout.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Api</span>
+                        <span class="tech-tag">EJS</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="https://raahbar.onrender.com" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="client">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <span class="project-badge badge-client">Palanpur</span>
+                    </div>
+                    <h3 class="project-title">Yash Domestic Website</h3>
+                    <p class="project-desc">Yash Domestic is a community-focused web platform that drives educational programs, youth empowerment, and veterinary healthcare. It offers online booking for animal care, volunteer registration, and donation management to streamline community outreach and field rescue operations.</p>
+                    <div class="tech-tags">
+                      <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Api</span>
+                       <span class="tech-tag">Render</span>
+                        <span class="tech-tag">EJS</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                         <a href="https://yashdomestic.com" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                  </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="client" >
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                        <span class="project-badge badge-client">Chappi</span>
+                    </div>
+                    <h3 class="project-title">Tasneem Mukhwas Ecommerce</h3>
+                    <p class="project-desc">Tasneem Muhwas is a full-stack e-commerce store for premium mouth fresheners and digestives. It features smooth product browsing, cart management, secure payments, and an admin panel for tracking orders and inventory.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Mapbox</span>
+                        <span class="tech-tag">seo</span>
+                        <span class="tech-tag">custom mailid</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="https://tasneemmukhwas.com/" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                    </div>
+                </div>
+
+            </div>
+
+              <!-- 2nd  -->
+             <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="client">
                     <div class="card-top-row">
                         <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
                         <span class="project-badge badge-client">Kanai</span>
                     </div>
                     <h3 class="project-title">AdVitum Healthcare</h3>
-                    <p class="project-desc">B2B wholesale medical inventory platform providing seamless order processing, dynamic catalog search, and real-time backend updates for pharmaceutical distributors.</p>
+                    <p class="project-desc">B2B medical inventory platform engineered for pharmaceutical distributors. Features dynamic catalog search, product selection, and an automated inquiry system for custom quotes. Includes real-time backend updates to streamline inventory tracking and client communication without payment gateways.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">Express</span>
@@ -881,46 +958,226 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="project-card" data-category="client" onclick="openProjectModal(1)">
+                <div class="project-card" data-category="client">
                     <div class="card-top-row">
                         <div class="project-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                        <span class="project-badge badge-client">Client Work</span>
+                        <span class="project-badge badge-client">Baroda</span>
                     </div>
-                    <h3 class="project-title">Yash Domestic Survey App</h3>
-                    <p class="project-desc">Native Android survey & mapping application integrated with Google Maps API and a custom MERN admin panel for real-time geospatial animal tracking.</p>
+                    <h3 class="project-title">Yash Records Admin Panel</h3>
+                    <p class="project-desc">Centralized backend control panel built to manage, visualize, and analyze incoming field survey data in real time. Features role-based access control where admins can create and manage field-worker credentials, view interactive map layers, track live surveyor activity, and access automated analytics to help animal welfare teams efficiently plan vaccination and spay/neuter drives.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Android SDK</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">REST API</span>
-                        <span class="tech-tag">Google Maps</span>
+                      <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Api</span>
+                       <span class="tech-tag">Render</span>
+                        <span class="tech-tag">EJS</span>
                     </div>
                     <div class="project-actions" onclick="event.stopPropagation()">
                         <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
-                        <button class="btn-card btn-card-primary" onclick="openProjectModal(1)"><i class="fa-solid fa-circle-info"></i> Details</button>
-                    </div>
+                         <a href="https://yashrecords.com" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                  </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="project-card" data-category="personal" onclick="openProjectModal(2)">
+                <div class="project-card" data-category="client" >
                     <div class="card-top-row">
                         <div class="project-icon"><i class="fa-solid fa-house-laptop"></i></div>
-                        <span class="project-badge badge-personal">Personal Project</span>
+                        <span class="project-badge badge-client">Baroda</span>
                     </div>
-                    <h3 class="project-title">StayFound Rental Engine</h3>
-                    <p class="project-desc">Full-featured Airbnb clone offering interactive booking flows, user authentications, reviews, geo-location mapping, and property management dashboard.</p>
+                    <h3 class="project-title">Yash Records (Mobile App)</h3>
+                    <p class="project-desc">Geospatial Android application developed for field workers to conduct real-time stray dog surveys and sightings. Integrated with Google Maps API and location services, the app allows users to log exact GPS coordinates, upload stray animal photos, tag health status, and capture survey data instantly on the field—even with low network connectivity.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">Express</span>
                         <span class="tech-tag">MongoDB</span>
                         <span class="tech-tag">Mapbox</span>
+                        <span class="tech-tag">seo</span>
+                        <span class="tech-tag">custom mailid</span>
                     </div>
                     <div class="project-actions" onclick="event.stopPropagation()">
                         <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
-                        <a href="#" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.yashrecords.app" target="_blank" class="btn-card btn-card-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Playstore</a>
                     </div>
                 </div>
+
+            </div>
+             <!-- 3rd -->
+              <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="personal">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">Admina (HRMS)</h3>
+                    <p class="project-desc">A robust and intuitive Human Resource Management System (HRMS) designed to streamline workplace productivity. This platform empowers administrators to manage employees, track attendance, assign tasks, handle leave requests, and monitor GitHub project submissions all from a centralized dashboard.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">templates</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">route</span>
+                        <span class="tech-tag">html</span>
+                        
+                        <span class="tech-tag">css</span>
+                        
+                        <span class="tech-tag">j.s</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98/HRMS" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="personal">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">StayForward</h3>
+                    <p class="project-desc">Vacation Rentals & Accommodation Platform A secure and intuitive Vacation Rental & Accommodation Platform built with the MEN Stack (MongoDB, Express, Node.js). It features strict route protection, user role management, and stateful session tracking to deliver a seamless booking experience.</p>
+                    <div class="tech-tags">
+                      <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Api</span>
+                       <span class="tech-tag">Render</span>
+                        <span class="tech-tag">EJS</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98/StayFound_MERN_PROJECT" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                           </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="personal" >
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                        <span class="project-badge badge-personal">Hackathon</span>
+                    </div>
+                    <h3 class="project-title">Resign Guards</h3>
+                    <p class="project-desc">Machine learning-driven attrition prediction system engineered to identify high-risk employee turnover before it happens. Built using predictive models trained on key HR metrics—such as salary tier, tenure, overtime hours, job satisfaction, and evaluation scores—to calculate real-time attrition probability and key risk factors for each employee.</p>
+                    <div class="tech-tags">
+                         <span class="tech-tag">Django</span>
+                        <span class="tech-tag">templates</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">route</span>
+                        <span class="tech-tag">html</span>
+                         
+                        <span class="tech-tag">ML model</span>
+                        
+                        <span class="tech-tag">Integration</span>
+                        <span class="tech-tag">css</span>
+                        
+                        <span class="tech-tag">j.s</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98/ml_integrate_attrition" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                </div>
+
+            </div>
+              <!-- 4th -->
+              <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="personal">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">Chat's Up Application</h3>
+                    <p class="project-desc">Realtime chat appliation helps to understand how sender and receiver are connected to database and how specific message goes to correct receiver</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Xml</span>
+                        <span class="tech-tag">Api</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Android</span>
+                        
+                        
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98/CHAT-S_UP-APP" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="personal">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">Agro E-commerce</h3>
+                    <p class="project-desc">Full-stack e-commerce marketplace tailored for the agricultural sector, connecting farmers with quality seeds, fertilizers, and equipment. Features categorized product browsing, dynamic search filters, a smooth cart management system, and secure order processing to make essential farming supplies easily accessible.</p>
+                    <div class="tech-tags">
+                      <span class="tech-tag">Django</span>
+                        <span class="tech-tag">templates</span>
+                        <span class="tech-tag">database</span>
+                        <span class="tech-tag">admin</span>
+                       <span class="tech-tag">user</span>
+                        <span class="tech-tag">crud</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98/AGRO_FARM" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                           </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="personal" >
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-house-laptop"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">TRACK FLOW</h3>
+                    <p class="project-desc">Activity Tracking & Insights: Built a real-time tracking system to monitor user app/site activities and stream live metrics to an analytics
+dashboard.
+Smart App Blocker: Implemented goal-setting workflows that automatically block targeted distracting applications for specified time
+intervals.</p>
+                    <div class="tech-tags">
+                         <span class="tech-tag">Mongodb</span>
+                        <span class="tech-tag">express</span>
+                        <span class="tech-tag">node</span>
+                        <span class="tech-tag">python</span>
+                        <span class="tech-tag">render</span>
+                        <span class="tech-tag">ejs</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                </div>
+
+            </div>
+            <!-- 5th -->
+              <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="personal">
+                    <div class="card-top-row">
+                        <div class="project-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <span class="project-badge badge-personal">Personal</span>
+                    </div>
+                    <h3 class="project-title">Noha App & express Api</h3>
+                    <p class="project-desc">A app uses express api to show list of authors , individual total kalams and all </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">java</span>
+                        <span class="tech-tag">express</span>
+                        <span class="tech-tag">android</span>
+                        <span class="tech-tag">xml</span>
+                        <span class="tech-tag">atlas</span>
+                        
+                        <span class="tech-tag">render</span>
+                        
+                        <span class="tech-tag">ejs</span>
+                    </div>
+                    <div class="project-actions" onclick="event.stopPropagation()">
+                        <a href="https://github.com/karadiya98" target="_blank" class="btn-card btn-card-outline"><i class="fa-brands fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                
 
             </div>
 
@@ -982,7 +1239,7 @@
                 <div class="footer-col footer-action-card">
                     <h4 class="footer-title">Let's Build Together</h4>
                     <p class="action-desc">Have a project or custom requirements in mind?</p>
-                    <a href="https://wa.me/8780929056" target="_blank" class="btn-whatsapp-glow">
+                    <a href="/contact" target="_blank" class="btn-whatsapp-glow">
                         <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
                     </a>
                 </div>

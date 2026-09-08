@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Technical Services - Haidar Ali</title>
+    <title>Haidar Ali Portfolio</title>
+    <!-- Tab bar logo (Favicon) -->
+    <link rel="icon" type="image/png" href="images/logo2.png">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -722,7 +724,7 @@
             </nav>
 
             <div class="nav-actions">
-                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                <a href="/enquiry"  class="btn-glow">
                     <i class="fa-brands fa-whatsapp"></i> Instant Hire
                 </a>
             </div>
@@ -765,16 +767,16 @@
     </section>
 
     <!-- Tabs -->
-    <div class="tabs-wrapper">
-        <div class="tab-container">
-            <button class="tab-btn active" id="offerTabBtn" onclick="switchTab('whatWeOfferContent', 'offerTabBtn')">
-                <i class="fa-solid fa-cubes"></i> What we Do 
-            </button>
-            <button class="tab-btn" id="whyTabBtn" onclick="switchTab('whyChooseUsContent', 'whyTabBtn')">
-                <i class="fa-solid fa-shield-halved"></i> Why Choose Us
-            </button>
-        </div>
+    <div class="tabs-wrapper" style="position: sticky; top: 100px; z-index: 1000;">
+    <div class="tab-container">
+        <button class="tab-btn active" id="offerTabBtn" onclick="switchTab('whatWeOfferContent', 'offerTabBtn')">
+            <i class="fa-solid fa-cubes"></i> What we Do 
+        </button>
+        <button class="tab-btn" id="whyTabBtn" onclick="switchTab('whyChooseUsContent', 'whyTabBtn')">
+            <i class="fa-solid fa-shield-halved"></i> Why Choose Us
+        </button>
     </div>
+</div>
 
     <!-- TAB 1: What We Offer -->
     <div class="tab-content active" id="whatWeOfferContent">
@@ -986,7 +988,7 @@
                 <div class="footer-col footer-action-card">
                     <h4 class="footer-title">Let's Build Together</h4>
                     <p class="action-desc">Have a project or custom requirements in mind?</p>
-                    <a href="https://wa.me/8780929056" target="_blank" class="btn-whatsapp-glow">
+                    <a href="/contact" target="_blank" class="btn-whatsapp-glow">
                         <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp
                     </a>
                 </div>

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Proposal & Instant Hire - Haidar Ali</title>
+   <title>Haidar Ali Portfolio</title>
+    <!-- Tab bar logo (Favicon) -->
+    <link rel="icon" type="image/png" href="images/logo2.png">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -713,12 +715,12 @@
                 <a href="/" class="nav-link">About</a>
                 <a href="/services" class="nav-link">Services</a>
                 <a href="/projects" class="nav-link">Client's Work</a>
-                <a href="/workflow" class="nav-link active">Workflow</a>
+                <a href="/workflow" class="nav-link ">Workflow</a>
                 <a href="/contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="https://wa.me/8780929056" target="_blank" class="btn-glow">
+                <a href="/enquiry"  class="btn-glow">
                     <i class="fa-brands fa-whatsapp"></i> Instant Hire
                 </a>
             </div>
@@ -740,7 +742,7 @@
                 <i class="fa-solid fa-briefcase"></i>
                 <span>Client's Work</span>
             </a>
-            <a href="/workflow" class="mobile-app-link active">
+            <a href="/workflow" class="mobile-app-link">
                 <i class="fa-solid fa-diagram-project"></i>
                 <span>Workflow</span>
             </a>
@@ -755,7 +757,7 @@
     <main class="container">
         <section class="page-header">
             <span class="slogan-tag">Start Your Project</span>
-            <h1>Request a Project <span class="gradient-text">Proposal</span></h1>
+            <h1>Request a Project <span style="color: var(--accent);">Proposal</span></h1>
             <p>Tell me about your technical goals, target timeline, and budget. Get a detailed technical estimate within 24 hours.</p>
         </section>
 
@@ -796,11 +798,11 @@
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-input" placeholder="e.g. Alex Turner" required>
+                            <input type="text" class="form-input" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Business Email</label>
-                            <input type="email" class="form-input" placeholder="alex@company.com" required>
+                            <input type="email" class="form-input" placeholder="Your Email" required>
                         </div>
                     </div>
 
@@ -809,19 +811,25 @@
                             <label class="form-label">Project Type</label>
                             <select class="form-select" required>
                                 <option value="" disabled selected>Select Primary Need</option>
-                                <option value="fullstack">Full-Stack Web App (MERN/Django)</option>
-                                <option value="b2b">B2B/Wholesale E-Commerce</option>
-                                <option value="mobile">Android / Mobile App</option>
-                                <option value="redesign">UI/UX Redesign & Optimization</option>
+                                <option value="fullstack">Full-Stack Website + Admin panel</option>
+                                <option value="b2b">Ecommerce + Admin Dashboard</option>
+                                <option value="mobile">Applicaion</option>
+                                <option value="redesign">Hotel Software</option>
+                                <option value="b2b">App && Website</option>
+                                <option value="mobile">UI / UX</option>
+                                <option value="redesign">Websites (AI)</option>
+                                
+                                <option value="redesign">Other</option>
+                                
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Estimated Budget Range</label>
                             <select class="form-select">
                                 <option value="" disabled selected>Select Budget</option>
-                                <option value="starter">Starter (&lt; ₹25k / $300)</option>
-                                <option value="growth">Growth (₹25k - ₹60k / $300 - $800)</option>
-                                <option value="enterprise">Custom Enterprise (₹60k+ / $800+)</option>
+                                <option value="starter">5k - 10k</option>
+                                <option value="growth">10k - 25k</option>
+                                <option value="enterprise">25k - 50+</option>
                             </select>
                         </div>
                     </div>
