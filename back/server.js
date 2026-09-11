@@ -50,3 +50,14 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+const axios = require('axios'); 
+const RENDER_URL = 'https://haidarali-portfolio.onrender.com'; 
+setInterval(async () => {
+  try {
+    await axios.get(RENDER_URL);
+    console.log('Self-ping successful: Server kept alive');
+  } catch (error) {
+    console.error('Self-ping failed:', error.message);
+  }
+}, 10 * 60 * 1000);
